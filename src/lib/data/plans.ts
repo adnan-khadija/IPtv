@@ -24,7 +24,7 @@ export const plans: Plan[] = [
     features: [
       "20,000+ Live Channels",
       "40,000+ VOD Movies & Series",
-      "Full HD & 4K Quality",
+      "High Quality Picture",
       "1 Device Connection",
       "EPG TV Guide",
       "Anti-Freeze Technology",
@@ -44,7 +44,7 @@ export const plans: Plan[] = [
     features: [
       "20,000+ Live Channels",
       "40,000+ VOD Movies & Series",
-      "Full HD & 4K Quality",
+      "High Quality Picture",
       "1 Device Connection",
       "EPG TV Guide",
       "Anti-Freeze Technology",
@@ -66,7 +66,7 @@ export const plans: Plan[] = [
     features: [
       "20,000+ Live Channels",
       "40,000+ VOD Movies & Series",
-      "Full HD & 4K Quality",
+      "High Quality Picture",
       "1 Device Connection",
       "EPG TV Guide",
       "Anti-Freeze Technology",
@@ -88,7 +88,7 @@ export const plans: Plan[] = [
     features: [
       "20,000+ Live Channels",
       "40,000+ VOD Movies & Series",
-      "Full HD & 4K Quality",
+      "High Quality Picture",
       "1 Device Connection",
       "EPG TV Guide",
       "Anti-Freeze Technology",

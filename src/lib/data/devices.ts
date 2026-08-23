@@ -16,7 +16,7 @@ export const devices: Device[] = [
     id: "firestick",
     name: "Amazon Firestick",
     icon: "Flame",
-    description: "Fire TV Stick 4K & Cube",
+    description: "Fire TV Stick & Cube",
   },
   {
     id: "android",

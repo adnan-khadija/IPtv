@@ -10,10 +10,10 @@ export const features: Feature[] = [
   {
     id: "quality",
     icon: "Tv2",
-    title: "HD, 4K & 8K Quality",
+    title: "High Quality Picture",
     description:
-      "Experience crystal-clear streaming with up to 8K resolution. Enjoy smooth, buffer-free entertainment on any screen.",
-    stat: "8K Ready",
+      "Experience crystal-clear streaming with superior resolution. Enjoy smooth, buffer-free entertainment on any screen.",
+    stat: "Full HD",
   },
   {
     id: "channels",

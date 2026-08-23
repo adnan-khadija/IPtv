@@ -10,11 +10,11 @@ export const metadata: Metadata = {
     template: "%s | StreamVault",
   },
   description:
-    "StreamVault delivers 20,000+ live channels, 40,000+ VOD titles, and crystal-clear 4K/8K streaming. Starting at $14.99/month. Instant activation. 7-day money-back guarantee.",
+    "StreamVault delivers 20,000+ live channels, 40,000+ VOD titles, and high quality streaming. Starting at $14.99/month. Instant activation. 7-day money-back guarantee.",
   keywords: [
     "IPTV",
     "live TV streaming",
-    "4K streaming",
+    "high quality streaming",
     "IPTV subscription",
     "cheap IPTV",
     "best IPTV service",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "StreamVault",
     title: "StreamVault — Premium IPTV Service | 20,000+ Channels",
     description:
-      "StreamVault delivers 20,000+ live channels, 40,000+ VOD titles, and crystal-clear 4K/8K streaming. Starting at $14.99/month.",
+      "StreamVault delivers 20,000+ live channels, 40,000+ VOD titles, and high quality streaming. Starting at $14.99/month.",
     images: [
       {
         url: "/og-image.png",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "StreamVault — Premium IPTV Service",
-    description: "20,000+ live channels, 40,000+ VOD titles, 4K/8K streaming from $14.99/month.",
+    description: "20,000+ live channels, 40,000+ VOD titles, high quality streaming from $14.99/month.",
     images: ["/og-image.png"],
     creator: "@StreamVaultTV",
   },
@@ -62,6 +62,10 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
     },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
 };
 

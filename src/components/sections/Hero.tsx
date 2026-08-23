@@ -16,7 +16,7 @@ const fadeUp = {
 export default function Hero({ content }: { content?: any }) {
   const c = content || {
     title: "Le cinéma chez vous, sans compromis.",
-    subtitle: "Accédez à plus de 20 000 chaînes en direct et 40 000+ films & séries en VOD. Qualité 4K, sans coupure, sans engagement.",
+    subtitle: "Accédez à plus de 20 000 chaînes en direct et 40 000+ films & séries en VOD. Haute qualité d'image, sans coupure, sans engagement.",
     cta1: "Voir les offres",
     cta2: "Découvrir les chaînes",
     reassurance: "Activation en moins de 2h • Sans engagement • Support 24/7"

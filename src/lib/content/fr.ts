@@ -10,17 +10,17 @@ export const contentFr = {
   },
   hero: {
     title: "Le Meilleur Abonnement IPTV en Suisse.",
-    subtitle: "Rejoignez plus de 50 000 clients satisfaits. Accédez à +20 000 chaînes TV en direct et +40 000 films & séries en VOD. Qualité 4K, serveurs stables, sans coupure.",
+    subtitle: "Rejoignez plus de 50 000 clients satisfaits. Accédez à +20 000 chaînes TV en direct et +40 000 films & séries en VOD. Haute qualité d'image, serveurs stables, sans coupure.",
     cta1: "Voir les Abonnements IPTV",
     cta2: "Test 24H Gratuit",
     reassurance: "Activation Immédiate • Sans Engagement • Support Suisse 24/7",
   },
   features: {
-    title: "Pourquoi notre IPTV est le N°1",
-    subtitle: "Découvrez pourquoi nous sommes le fournisseur IPTV le plus fiable du marché francophone.",
+    title: "Pourquoi choisir notre IPTV ?",
+    subtitle: "Un service IPTV de haute qualité, des serveurs stables et un support réactif pour votre confort.",
     items: [
       { title: "Serveurs IPTV Premium", description: "Technologie Anti-Freeze exclusive. Bande passante ultra-rapide garantie sans coupure, même les soirs de Ligue des Champions." },
-      { title: "Qualité 4K, FHD & HD", description: "Profitez d'une netteté exceptionnelle sur votre Smart TV. Toutes les résolutions sont adaptées à votre connexion." },
+      { title: "Haute Qualité d'Image", description: "Profitez d'une image nette et fluide sur votre Smart TV. Toutes les résolutions s'adaptent automatiquement à votre connexion." },
       { title: "Catalogue VOD & Séries", description: "Netflix, Amazon Prime, Disney+ inclus. Les dernières sorties cinéma et séries mises à jour chaque jour." },
       { title: "Replay & Catch-up 7 jours", description: "Vous avez raté le journal ou votre émission ? Revoyez tous vos programmes favoris jusqu'à 7 jours en arrière." },
     ]
@@ -45,7 +45,7 @@ export const contentFr = {
       "Toutes les chaînes (Sport, Ciné, Docu)",
       "VOD (Séries & Films récents)",
       "Serveur IPTV Anti-Coupure",
-      "Qualité SD / HD / FHD / 4K",
+      "Haute qualité d'image",
       "Replay 7 Jours & Guide EPG",
       "Compatible Smart TV, Android, Apple",
       "Assistance par WhatsApp & Email",
@@ -85,7 +85,7 @@ export const contentFr = {
       },
       {
         q: "Quel est le débit internet minimum requis ?",
-        a: "Pour une expérience IPTV fluide en Full HD, nous recommandons une connexion d'au moins 15 Mbps. Pour la 4K, 30 Mbps sont conseillés."
+        a: "Pour une expérience IPTV fluide en Full HD, nous recommandons une connexion d'au moins 15 Mbps. Pour la haute qualité, 30 Mbps sont conseillés."
       },
       {
         q: "Avez-vous les bouquets sports et chaînes suisses ?",
@@ -94,7 +94,7 @@ export const contentFr = {
     ]
   },
   footer: {
-    description: "StreamVault est le fournisseur d'abonnements IPTV premium N°1 en Suisse. Qualité d'image 4K, serveurs stables, et catalogue VOD immense.",
+    description: "StreamVault propose des abonnements IPTV premium en Suisse. Haute qualité d'image, serveurs stables, et catalogue VOD immense.",
     quickLinks: "Accès Rapide",
     legal: "Légal & Sécurité",
     rights: "Tous droits réservés. Service IPTV Premium.",

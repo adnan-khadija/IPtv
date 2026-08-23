@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight, Play } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import { contentFr } from "@/lib/content/fr";
 import { contentEn } from "@/lib/content/en";
 
@@ -84,12 +84,6 @@ export default function Navbar() {
               </Link>
               
               <Link
-                href={`/${currentLang}/login`}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >
-                {content.login}
-              </Link>
-              <Link
                 href={`/${currentLang}/#pricing`}
                 className="flex items-center gap-1.5 px-6 py-2 text-sm font-bold text-white rounded bg-[var(--color-accent)] hover:bg-[#b20710] shadow-lg glow-red-hover transition-all duration-200"
               >
@@ -139,13 +133,6 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
-                <Link
-                  href={`/${currentLang}/login`}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-gray-300 hover:text-white rounded-lg hover:bg-white/5 transition-all"
-                >
-                  {content.login}
-                </Link>
                 <Link
                   href={`/${currentLang}/#pricing`}
                   onClick={() => setMobileOpen(false)}

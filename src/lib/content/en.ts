@@ -10,17 +10,17 @@ export const contentEn = {
   },
   hero: {
     title: "The Best Premium IPTV Service.",
-    subtitle: "Join over 50,000 satisfied customers. Access 20,000+ live TV channels and 40,000+ VOD movies & series. 4K quality, stable servers, zero buffering.",
+    subtitle: "Join over 50,000 satisfied customers. Access 20,000+ live TV channels and 40,000+ VOD movies & series. High quality picture, stable servers, zero buffering.",
     cta1: "View IPTV Plans",
     cta2: "Free 24H Trial",
     reassurance: "Instant Activation • No Contract • 24/7 Premium Support",
   },
   features: {
-    title: "Why our IPTV is #1",
-    subtitle: "Discover why we are the most reliable IPTV provider on the market.",
+    title: "Why Choose Our IPTV?",
+    subtitle: "A high quality IPTV service with stable servers and responsive support for your comfort.",
     items: [
       { title: "Premium IPTV Servers", description: "Exclusive Anti-Freeze technology. Ultra-fast bandwidth guaranteed without buffering, even during big sports matches." },
-      { title: "4K, FHD & HD Quality", description: "Enjoy exceptional sharpness on your Smart TV. All resolutions are automatically adapted to your connection speed." },
+      { title: "High Quality Picture", description: "Enjoy a sharp and smooth image on your Smart TV. All resolutions automatically adapt to your connection." },
       { title: "Giant VOD Library", description: "Netflix, Amazon Prime, Disney+ content included. The latest cinema releases and trending series updated daily." },
       { title: "7-Day Replay & Catch-up", description: "Missed the news or your favorite show? Watch all your favorite programs up to 7 days back." },
     ]
@@ -45,7 +45,7 @@ export const contentEn = {
       "All Channels (Sports, Movies, Docs)",
       "VOD (Recent Series & Movies)",
       "Anti-Buffer IPTV Server",
-      "SD / HD / FHD / 4K Quality",
+      "High Quality Picture",
       "7 Days Replay & EPG Guide",
       "Compatible Smart TV, Android, Apple",
       "WhatsApp & Email Support",
@@ -85,7 +85,7 @@ export const contentEn = {
       },
       {
         q: "What is the minimum internet speed required?",
-        a: "For a smooth IPTV experience in Full HD, we recommend a connection of at least 15 Mbps. For 4K streaming, 30 Mbps is advised."
+        a: "For a smooth IPTV experience in Full HD, we recommend a connection of at least 15 Mbps. For high quality streaming, 30 Mbps is advised."
       },
       {
         q: "Do you have all the sports channels?",
@@ -94,7 +94,7 @@ export const contentEn = {
     ]
   },
   footer: {
-    description: "StreamVault is the #1 premium IPTV subscription provider. 4K image quality, stable servers, and a massive VOD catalog.",
+    description: "StreamVault provides premium IPTV subscriptions with high quality picture, stable servers, and a massive VOD catalog.",
     quickLinks: "Quick Access",
     legal: "Legal & Security",
     rights: "All rights reserved. Premium IPTV Service.",

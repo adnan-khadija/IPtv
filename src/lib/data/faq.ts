@@ -39,7 +39,7 @@ export const faqItems: FAQItem[] = [
     id: "faq-6",
     question: "What internet speed do I need for streaming?",
     answer:
-      "For SD quality: 5 Mbps. For Full HD (1080p): 10 Mbps. For 4K: 25 Mbps. For 4K with multiple streams: 50+ Mbps. We recommend a stable wired (Ethernet) connection for the best experience, though Wi-Fi works well for most users. A minimum of 10 Mbps download speed is required for uninterrupted HD streaming.",
+      "For SD quality: 5 Mbps. For Full HD (1080p): 10 Mbps. For high quality streaming: 25 Mbps. We recommend a stable wired (Ethernet) connection for the best experience, though Wi-Fi works well for most users. A minimum of 10 Mbps download speed is required for uninterrupted HD streaming.",
   },
   {
     id: "faq-7",
