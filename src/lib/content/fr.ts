@@ -1,11 +1,14 @@
 export const contentFr = {
   nav: {
+    home: "Accueil",
+    channels: "Chaînes & VOD",
+    faq: "FAQ",
+    contact: "Contactez-nous",
     features: "Fonctionnalités IPTV",
     pricing: "Abonnements",
     devices: "Appareils",
-    faq: "FAQ IPTV",
     login: "Espace Client",
-    getStarted: "S'abonner",
+    getStarted: "Acheter",
     promoBanner: "🔥 -30% sur tous les abonnements IPTV — Offre limitée 🔥",
   },
   hero: {
@@ -42,12 +45,16 @@ export const contentFr = {
     },
     cta: "Commander mon IPTV",
     featuresList: [
+      "20 000 Chaînes TV",
+      "90 000 Films et Séries",
+      "M3U & MAG Portal & Xtream",
+      "100% Sécurisé",
       "Toutes les chaînes (Sport, Ciné, Docu)",
       "VOD (Séries & Films récents)",
       "Serveur IPTV Anti-Coupure",
       "Haute qualité d'image",
-      "Replay 7 Jours & Guide EPG",
-      "Compatible Smart TV, Android, Apple",
+      "Guide TV (EPG)",
+      "Supporte tous les appareils",
       "Assistance par WhatsApp & Email",
     ],
     reassurance: [
@@ -90,6 +97,70 @@ export const contentFr = {
       {
         q: "Avez-vous les bouquets sports et chaînes suisses ?",
         a: "Absolument. L'abonnement IPTV inclut toutes les chaînes suisses (RTS, SRF, RSI, Blue Sports, MySports), ainsi que les bouquets sportifs complets français, internationaux, et les PPV (Canal+, RMC, BeIN, etc.)."
+      }
+    ]
+  },
+  sliders: {
+    title: "Nos Chaînes TV & VOD",
+    subtitle: "Découvrez notre large sélection de chaînes en direct et les derniers films & séries.",
+    live: "EN DIRECT",
+    moviesTitle: "Films & Séries Récentes (VOD)",
+    moviesSubtitle: "Profitez des dernières nouveautés Netflix, Disney+, Prime Video & HBO en Ultra HD.",
+    tvTitle: "Chaînes TV en Direct par Pays",
+    tvSubtitle: "Sélectionnez un pays cible pour explorer notre flux de chaînes stables :",
+    countries: {
+      ch: "🇨🇭 Suisse",
+      fr: "🇫🇷 France",
+      ukUs: "🇬🇧/🇺🇸 UK & USA",
+    }
+  },
+  whatsappReviews: {
+    title: "Avis Clients WhatsApp",
+    subtitle: "Ce que disent nos clients satisfaits de leur abonnement StreamVault.",
+    agentName: "Support Client",
+    statusOnline: "En ligne",
+    placeholderMessage: "Tapez un message...",
+    today: "AUJOURD'HUI",
+    reviews: [
+      {
+        name: "Julien M. (Genève)",
+        avatar: "JM",
+        messages: [
+          { sender: "client", text: "Salut ! J'ai bien reçu mes accès IPTV, merci beaucoup." },
+          { sender: "agent", text: "Super ! Si vous avez la moindre question, n'hésitez pas. Bon streaming !" },
+          { sender: "client", text: "Franchement la qualité est incroyable, aucune coupure sur le match de Blue Sports hier soir ! Je vais recommander chez vous pour mon père." },
+          { sender: "agent", text: "Merci pour votre retour ! C'est super. Profitez bien !" }
+        ]
+      },
+      {
+        name: "Thomas D. (Lausanne)",
+        avatar: "TD",
+        messages: [
+          { sender: "client", text: "Bonjour, j'ai installé l'application sur ma Smart TV Samsung, tout fonctionne nickel." },
+          { sender: "agent", text: "Ravi de l'entendre ! Le catalogue VOD se met à jour automatiquement." },
+          { sender: "client", text: "Oui j'ai vu, la liste de films Netflix et Disney+ est immense, les enfants sont super contents. La qualité est en vrai 4K !" },
+          { sender: "agent", text: "Génial ! Bon cinéma à toute la famille 🍿" }
+        ]
+      },
+      {
+        name: "Sophie L. (Neuchâtel)",
+        avatar: "SL",
+        messages: [
+          { sender: "client", text: "Bonjour, est-ce que je peux avoir un test gratuit de 24h ?" },
+          { sender: "agent", text: "Bonjour Sophie, bien sûr ! Voici vos accès : Host: http://... User: test_837 Pass: 9283" },
+          { sender: "client", text: "Le test 24h était super convaincant, je viens de prendre l'abonnement de 12 mois ! Le support sur WhatsApp est hyper rapide, bravo." },
+          { sender: "agent", text: "Merci Sophie ! Bienvenue chez StreamVault. Le service est maintenant actif pour 1 an." }
+        ]
+      },
+      {
+        name: "Laurent B. (Fribourg)",
+        avatar: "LB",
+        messages: [
+          { sender: "client", text: "Salut, le portail MAG est configuré. Tout marche impeccablement." },
+          { sender: "agent", text: "Parfait ! La stabilité de notre portail MAG est garantie par nos serveurs redondants." },
+          { sender: "client", text: "Le meilleur IPTV que j'ai testé. Zéro coupure, le guide des programmes (EPG) est super complet." },
+          { sender: "agent", text: "Merci beaucoup pour votre fidélité Laurent !" }
+        ]
       }
     ]
   },

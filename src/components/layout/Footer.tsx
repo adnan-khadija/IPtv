@@ -22,10 +22,10 @@ export default function Footer() {
 
   const footerLinks = {
     product: [
-      { label: c.nav.features, href: `/${lang}/#features` },
-      { label: c.nav.pricing, href: `/${lang}/#pricing` },
-      { label: c.nav.devices, href: `/${lang}/#devices` },
+      { label: c.nav.home, href: `/${lang}/` },
+      { label: c.nav.channels, href: `/${lang}/#channels` },
       { label: c.nav.faq, href: `/${lang}/#faq` },
+      { label: c.nav.contact, href: `/${lang}/contact` },
     ],
     legal: [
       { label: c.footer.terms, href: `/${lang}/terms` },
@@ -41,6 +41,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href={`/${lang}`} className="flex items-center gap-2 mb-4 group">
+              <svg className="w-8 h-8 text-[var(--color-accent)] fill-[var(--color-accent)]/10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="5" width="20" height="14" rx="2.5" stroke="currentColor" strokeWidth="2" />
+                <path d="M17 2H7L12 5L17 2Z" fill="currentColor"/>
+                <polygon points="10 9 15 12 10 15 10 9" fill="currentColor" stroke="currentColor" strokeWidth="1"/>
+              </svg>
               <span className="text-2xl font-black font-title text-[var(--color-accent)] uppercase tracking-tight">
                 StreamVault
               </span>

@@ -3,6 +3,9 @@ import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
 import Pricing from "@/components/sections/Pricing";
 import Devices from "@/components/sections/Devices";
+import ChannelsAndVOD from "@/components/sections/ChannelsAndVOD";
+import WhatsAppReviews from "@/components/sections/WhatsAppReviews";
+import FAQ from "@/components/sections/FAQ";
 
 import { contentEn } from "@/lib/content/en";
 
@@ -15,9 +18,12 @@ export default function HomePage() {
   return (
     <>
       <Hero content={contentEn.hero} />
+      <ChannelsAndVOD content={contentEn.sliders} />
       <Features content={contentEn.features} />
       <Pricing content={contentEn.pricing} />
       <Devices content={contentEn.devices} />
+      <WhatsAppReviews content={contentEn.whatsappReviews} />
+      <FAQ content={contentEn.faq} />
     </>
   );
 }

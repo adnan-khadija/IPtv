@@ -1,11 +1,14 @@
 export const contentEn = {
   nav: {
+    home: "Home",
+    channels: "Channels List",
+    faq: "FAQ",
+    contact: "Contact Us",
     features: "IPTV Features",
     pricing: "Subscriptions",
     devices: "Devices",
-    faq: "IPTV FAQ",
     login: "Client Portal",
-    getStarted: "Subscribe",
+    getStarted: "Buy Now",
     promoBanner: "🔥 30% OFF all IPTV Subscriptions — Limited Time Offer 🔥",
   },
   hero: {
@@ -42,12 +45,16 @@ export const contentEn = {
     },
     cta: "Order IPTV Now",
     featuresList: [
+      "20,000 TV Channels",
+      "90,000 Movies and Series",
+      "M3U & MAG Portal & Xtream",
+      "100% Secure",
       "All Channels (Sports, Movies, Docs)",
       "VOD (Recent Series & Movies)",
       "Anti-Buffer IPTV Server",
       "High Quality Picture",
-      "7 Days Replay & EPG Guide",
-      "Compatible Smart TV, Android, Apple",
+      "TV Guide (EPG)",
+      "Support all devices",
       "WhatsApp & Email Support",
     ],
     reassurance: [
@@ -90,6 +97,70 @@ export const contentEn = {
       {
         q: "Do you have all the sports channels?",
         a: "Absolutely. The IPTV subscription includes all major sports channels (Sky, BT Sport, ESPN, BeIN, etc.) as well as Pay-Per-View events."
+      }
+    ]
+  },
+  sliders: {
+    title: "Our TV Channels & VOD",
+    subtitle: "Discover our large selection of live channels and latest movies & series.",
+    live: "LIVE",
+    moviesTitle: "Recent Movies & Series (VOD)",
+    moviesSubtitle: "Enjoy the latest releases from Netflix, Disney+, Prime Video & HBO in Ultra HD.",
+    tvTitle: "Live TV Channels by Target Country",
+    tvSubtitle: "Select a target country to explore our stable channels feed:",
+    countries: {
+      ch: "🇨🇭 Switzerland",
+      fr: "🇫🇷 France",
+      ukUs: "🇬🇧/🇺🇸 UK & USA",
+    }
+  },
+  whatsappReviews: {
+    title: "WhatsApp Customer Reviews",
+    subtitle: "What our satisfied customers say about their StreamVault subscription.",
+    agentName: "Client Support",
+    statusOnline: "Online",
+    placeholderMessage: "Type a message...",
+    today: "TODAY",
+    reviews: [
+      {
+        name: "Julien M. (Geneva)",
+        avatar: "JM",
+        messages: [
+          { sender: "client", text: "Hi! I received my IPTV access details, thank you very much." },
+          { sender: "agent", text: "Great! If you have any questions, don't hesitate. Happy streaming!" },
+          { sender: "client", text: "Honestly the quality is amazing, zero buffering during the Blue Sports match last night! I will order a subscription for my father too." },
+          { sender: "agent", text: "Thanks for the feedback! That's awesome. Enjoy!" }
+        ]
+      },
+      {
+        name: "Thomas D. (Lausanne)",
+        avatar: "TD",
+        messages: [
+          { sender: "client", text: "Hello, I installed the app on my Samsung Smart TV, everything works like a charm." },
+          { sender: "agent", text: "Glad to hear! The VOD catalog updates automatically." },
+          { sender: "client", text: "Yes I saw, the Netflix and Disney+ movie list is huge, the kids are super happy. The quality is real 4K!" },
+          { sender: "agent", text: "Awesome! Enjoy movie night with the family 🍿" }
+        ]
+      },
+      {
+        name: "Sophie L. (Neuchatel)",
+        avatar: "SL",
+        messages: [
+          { sender: "client", text: "Hello, can I get a 24-hour free trial?" },
+          { sender: "agent", text: "Hello Sophie, of course! Here are your credentials: Host: http://... User: test_837 Pass: 9283" },
+          { sender: "client", text: "The 24h trial was very convincing, I just bought the 12 months plan! The support on WhatsApp is super fast, bravo." },
+          { sender: "agent", text: "Thank you Sophie! Welcome to StreamVault. Your service is now active for 1 year." }
+        ]
+      },
+      {
+        name: "Laurent B. (Fribourg)",
+        avatar: "LB",
+        messages: [
+          { sender: "client", text: "Hi, the MAG portal is set up. Everything runs flawlessly." },
+          { sender: "agent", text: "Perfect! Our MAG portal stability is guaranteed by our redundant servers." },
+          { sender: "client", text: "Best IPTV I've tested. Zero buffering, and the TV Guide (EPG) is very detailed." },
+          { sender: "agent", text: "Thank you very much for your trust Laurent!" }
+        ]
       }
     ]
   },
