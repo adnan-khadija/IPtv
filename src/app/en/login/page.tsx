@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Zap, Mail, Lock, ArrowRight } from "lucide-react";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
@@ -16,7 +18,7 @@ export default function LoginPage() {
     await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
     // Demo: redirect to dashboard
-    window.location.href = "/dashboard";
+    router.push("/en/dashboard");
   };
 
   return (

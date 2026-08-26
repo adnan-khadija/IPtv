@@ -2,25 +2,49 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Phone, Video, MoreVertical, Smile, Paperclip, Mic, Send, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Phone, Video, MoreVertical, Smile, Paperclip, Mic, MessageCircle } from "lucide-react";
 
-export default function WhatsAppReviews({ content }: { content?: any }) {
+interface WhatsAppMessage {
+  sender: string;
+  text: string;
+}
+
+interface WhatsAppReview {
+  name: string;
+  avatar: string;
+  messages: WhatsAppMessage[];
+}
+
+interface WhatsAppReviewsProps {
+  content?: {
+    title: string;
+    subtitle: string;
+    agentName?: string;
+    statusOnline: string;
+    placeholderMessage: string;
+    today: string;
+    reviews: WhatsAppReview[];
+  };
+}
+
+export default function WhatsAppReviews({ content }: WhatsAppReviewsProps) {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  if (!content) return null;
-  const c = content;
-  const total = c.reviews.length;
+  const total = content?.reviews?.length || 0;
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!content || !isAutoPlaying || total === 0) return;
     const timer = setInterval(() => {
       setDirection(1);
       setCurrent((prev) => (prev + 1) % total);
     }, 6000);
     return () => clearInterval(timer);
-  }, [isAutoPlaying, total]);
+  }, [isAutoPlaying, total, content]);
+
+  if (!content) return null;
+  const c = content;
 
   const goTo = (index: number) => {
     setDirection(index > current ? 1 : -1);
@@ -119,7 +143,7 @@ export default function WhatsAppReviews({ content }: { content?: any }) {
                   </div>
 
                   {/* Messages Bubble Flow */}
-                  {review.messages.map((msg: any, mIdx: number) => {
+                  {review.messages.map((msg: WhatsAppMessage, mIdx: number) => {
                     const isClient = msg.sender === "client";
                     return (
                       <div
@@ -208,7 +232,7 @@ export default function WhatsAppReviews({ content }: { content?: any }) {
                 </div>
 
                 {/* Messages Bubble Flow */}
-                {c.reviews[current].messages.map((msg: any, mIdx: number) => {
+                {c.reviews[current].messages.map((msg: WhatsAppMessage, mIdx: number) => {
                   const isClient = msg.sender === "client";
                   return (
                     <div

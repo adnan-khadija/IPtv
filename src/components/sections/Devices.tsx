@@ -3,7 +3,14 @@
 import { motion } from "framer-motion";
 import { Monitor, Smartphone, Tv } from "lucide-react";
 
-export default function Devices({ content }: { content?: any }) {
+interface DevicesProps {
+  content?: {
+    title: string;
+    subtitle: string;
+  };
+}
+
+export default function Devices({ content }: DevicesProps) {
   if (!content) return null;
   const c = content;
 

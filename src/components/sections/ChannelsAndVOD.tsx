@@ -66,7 +66,24 @@ const VOD_DATA: VodItem[] = [
   { title: "Oppenheimer", image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=400", rating: "4.9", genre: "Biography, Drama", year: "2023", platform: "Universal" },
 ];
 
-export default function ChannelsAndVOD({ content }: { content?: any }) {
+interface ChannelsAndVODProps {
+  content?: {
+    title: string;
+    subtitle: string;
+    live: string;
+    moviesTitle: string;
+    moviesSubtitle: string;
+    tvTitle: string;
+    tvSubtitle: string;
+    countries: {
+      ch: string;
+      fr: string;
+      ukUs: string;
+    };
+  };
+}
+
+export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
   const [activeTab, setActiveTab] = useState<"ch" | "fr" | "ukUs">("ch");
 
   if (!content) return null;
@@ -214,6 +231,7 @@ export default function ChannelsAndVOD({ content }: { content?: any }) {
               >
                 {/* Poster container */}
                 <div className="relative aspect-[2/3] w-full overflow-hidden bg-zinc-900">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={movie.image}
                     alt={movie.title}

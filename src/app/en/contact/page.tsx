@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MessageCircle, Phone, Send, CheckCircle2, MapPin, Clock } from "lucide-react";
+import { Mail, MessageCircle, Phone, Send, CheckCircle2, Clock } from "lucide-react";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);

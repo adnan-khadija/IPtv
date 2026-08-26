@@ -10,7 +10,6 @@ export default function Testimonials() {
   const [direction, setDirection] = useState(1);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const itemsPerView = 3;
   const total = testimonials.length;
 
   useEffect(() => {

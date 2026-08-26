@@ -5,7 +5,24 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Check, Shield, Zap, Monitor, Clock } from "lucide-react";
 
-export default function Pricing({ content }: { content?: any }) {
+interface PricingProps {
+  content?: {
+    title: string;
+    subtitle: string;
+    prices: Record<string, { normal: number; promo: number }>;
+    badges: {
+      bestSeller: string;
+      save: string;
+      perMonth: string;
+    };
+    durations: Record<number | string, string>;
+    featuresList: string[];
+    cta: string;
+    reassurance: string[];
+  };
+}
+
+export default function Pricing({ content }: PricingProps) {
   const pathname = usePathname() || "";
   const isEn = pathname.startsWith("/en");
   const lang = isEn ? "en" : "fr";

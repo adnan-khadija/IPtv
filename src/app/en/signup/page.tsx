@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Zap, Mail, Lock, User, ArrowRight, Check } from "lucide-react";
 
@@ -12,6 +13,7 @@ const perks = [
 ];
 
 export default function SignupPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -21,7 +23,7 @@ export default function SignupPage() {
     setLoading(true);
     await new Promise((r) => setTimeout(r, 1500));
     setLoading(false);
-    window.location.href = "/dashboard";
+    router.push("/en/dashboard");
   };
 
   return (

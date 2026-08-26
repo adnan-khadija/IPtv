@@ -9,11 +9,21 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: i * 0.1, ease: "easeOut" as any },
+    transition: { duration: 0.8, delay: i * 0.1, ease: "easeOut" as const },
   }),
 };
 
-export default function Hero({ content }: { content?: any }) {
+interface HeroProps {
+  content?: {
+    title: string;
+    subtitle: string;
+    cta1: string;
+    cta2: string;
+    reassurance: string;
+  };
+}
+
+export default function Hero({ content }: HeroProps) {
   const c = content || {
     title: "Le cinéma chez vous, sans compromis.",
     subtitle: "Accédez à plus de 20 000 chaînes en direct et 40 000+ films & séries en VOD. Haute qualité d'image, sans coupure, sans engagement.",

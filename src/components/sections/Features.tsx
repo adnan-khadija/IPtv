@@ -2,12 +2,8 @@
 
 import { motion } from "framer-motion";
 import {
-  Tv2, Radio, Film, Smartphone, ShieldCheck, Headphones,
+  Tv2, Radio, Film, Smartphone,
 } from "lucide-react";
-
-const iconMap: Record<string, React.ElementType> = {
-  Tv2, Radio, Film, Smartphone, ShieldCheck, Headphones,
-};
 
 const defaultIcons = [Tv2, Radio, Film, Smartphone];
 
@@ -16,11 +12,24 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as any },
+    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
   }),
 };
 
-export default function Features({ content }: { content?: any }) {
+interface FeatureItem {
+  title: string;
+  description: string;
+}
+
+interface FeaturesProps {
+  content?: {
+    title: string;
+    subtitle: string;
+    items: FeatureItem[];
+  };
+}
+
+export default function Features({ content }: FeaturesProps) {
   if (!content) return null;
   const c = content;
 
@@ -54,7 +63,7 @@ export default function Features({ content }: { content?: any }) {
 
         {/* Feature grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {c.items.map((feature: any, i: number) => {
+          {c.items.map((feature: FeatureItem, i: number) => {
             const Icon = defaultIcons[i] || Tv2;
             return (
               <motion.div

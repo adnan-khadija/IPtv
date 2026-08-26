@@ -4,7 +4,20 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
-export default function FAQ({ content }: { content?: any }) {
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface FAQProps {
+  content?: {
+    title: string;
+    subtitle: string;
+    questions: FAQItem[];
+  };
+}
+
+export default function FAQ({ content }: FAQProps) {
   const [openId, setOpenId] = useState<number | null>(null);
 
   if (!content) return null;
@@ -43,7 +56,7 @@ export default function FAQ({ content }: { content?: any }) {
 
         {/* Accordion */}
         <div className="space-y-3">
-          {c.questions.map((item: any, i: number) => (
+          {c.questions.map((item: FAQItem, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}

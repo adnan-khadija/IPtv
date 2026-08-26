@@ -15,7 +15,7 @@
 
 ```bash
 # 1. Navigate to the project folder
-cd streamvault
+cd IPtv
 
 # 2. Install dependencies
 npm install
@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 📁 Project Structure
 
 ```
-streamvault/
+IPtv/
 ├── src/
 │   ├── app/
 │   │   ├── en/                      # English pages
@@ -156,9 +156,9 @@ Key utility classes: `section-padding`, `card-glass`, `gradient-text`, `glow-red
 
 ```bash
 npm run dev       # Start dev server → http://localhost:3000
-npm run build     # Build for production
+npm run build     # Build for production & verify TypeScript compile safety
 npm run start     # Start production server
-npm run lint      # Run ESLint
+npm run lint      # Run ESLint to check syntax & code formatting
 ```
 
 ---
