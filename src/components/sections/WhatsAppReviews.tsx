@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight, MessageCircle, Maximize2, X, ShieldCheck, Zo
 const SCREENSHOTS = [
   "/whatsapp-screenshots/image.png",
   "/whatsapp-screenshots/image2.png",
+  "/whatsapp-screenshots/image3.png",
 ];
 
 interface WhatsAppReviewsProps {
