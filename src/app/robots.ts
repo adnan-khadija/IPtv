@@ -6,20 +6,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/fr/", "/en/"],
-        disallow: [
-          "/dashboard/",
-          "/checkout/",
-          "/login/",
-          "/signup/",
-          "/api/",
-          "/_next/",
-        ],
+        disallow: ["/_next/"],
       },
       {
-        // Autoriser Googlebot explicitement sur les pages principales
         userAgent: "Googlebot",
         allow: ["/fr/", "/en/", "/fr/contact", "/en/contact"],
-        disallow: ["/dashboard/", "/api/"],
       },
     ],
     sitemap: "https://tvsuisse.ch/sitemap.xml",
