@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight, Home, Tv, HelpCircle, Mail } from "lucide-react";
+import { Menu, X, ChevronRight, Home, Tv, HelpCircle, MessageCircle } from "lucide-react";
 import { contentFr } from "@/lib/content/fr";
 import { contentEn } from "@/lib/content/en";
 
@@ -21,7 +21,7 @@ export default function Navbar() {
     { href: `/${currentLang}/`, label: content.home, icon: Home },
     { href: `/${currentLang}/#channels`, label: content.channels, icon: Tv },
     { href: `/${currentLang}/#faq`, label: content.faq, icon: HelpCircle },
-    { href: `/${currentLang}/contact`, label: content.contact, icon: Mail },
+    { href: `/${currentLang}/contact`, label: content.contact, icon: MessageCircle },
   ];
 
   useEffect(() => {

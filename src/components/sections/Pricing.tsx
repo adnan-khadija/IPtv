@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Check, Shield, Zap, Monitor, Clock } from "lucide-react";
+
+// WhatsApp Business number (digits only, with country code, no +)
+const WHATSAPP_NUMBER = "212699105831";
 
 interface PricingProps {
   content?: {
@@ -117,8 +119,12 @@ export default function Pricing({ content }: PricingProps) {
                   </ul>
 
                   {/* CTA */}
-                  <Link
-                    href={`/${lang}/checkout?plan=${months}m-1s`}
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                      `Bonjour, je suis intéressé(e) par l'offre ${c.durations[months]} à ${data.promo} CHF. Je souhaite souscrire.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-full py-3.5 rounded text-center font-bold text-base transition-all duration-300 flex items-center justify-center gap-2 ${
                       isBestSeller
                         ? "bg-[var(--color-accent)] text-white hover:bg-[#b20710] glow-red-hover"
@@ -127,7 +133,7 @@ export default function Pricing({ content }: PricingProps) {
                   >
                     <Zap size={16} className={isBestSeller ? "fill-white" : ""} />
                     {c.cta}
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             );

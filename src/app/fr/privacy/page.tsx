@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = { title: "Politique de confidentialité" };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -16,31 +16,25 @@ export default function PrivacyPage() {
     <div className="min-h-screen pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <div className="mb-10">
-          <h1 className="text-4xl font-black text-[var(--color-text-primary)] mb-2">Privacy Policy</h1>
-          <p className="text-sm text-[var(--color-text-muted)]">Last updated: January 1, 2025</p>
+          <h1 className="text-4xl font-black text-[var(--color-text-primary)] mb-2">Politique de confidentialité</h1>
+          <p className="text-sm text-[var(--color-text-muted)]">Dernière mise à jour : 2025</p>
         </div>
         <div className="card-glass rounded-2xl p-8">
-          <Section title="1. Information We Collect">
-            <p>We collect information you provide directly: name, email address, and payment information (processed securely by Stripe/PayPal — we never store full card details).</p>
-            <p>We also collect usage data including IP address, device type, and streaming activity for service quality purposes.</p>
+          <Section title="1. Protection des données">
+            <p>StreamVault s'engage à protéger la confidentialité de vos informations. Nous ne collectons que les informations strictement nécessaires à la fourniture de votre abonnement IPTV.</p>
           </Section>
-          <Section title="2. How We Use Your Information">
-            <p>We use your information to provide, maintain, and improve our service; process transactions; send account-related communications; and provide customer support.</p>
-          </Section>
-          <Section title="3. Data Sharing">
-            <p>We do not sell, rent, or share your personal data with third parties for marketing purposes. We share data only with service providers necessary to operate the service (payment processors, infrastructure providers).</p>
-          </Section>
-          <Section title="4. Data Security">
-            <p>We implement industry-standard security measures including 256-bit SSL encryption. However, no method of transmission over the internet is 100% secure.</p>
-          </Section>
-          <Section title="5. Cookies">
-            <p>We use cookies to maintain your session, remember preferences, and analyze usage. You can control cookies through your browser settings.</p>
-          </Section>
-          <Section title="6. Your Rights">
-            <p>You have the right to access, correct, or delete your personal data. Contact us at privacy@streamvault.tv to exercise these rights.</p>
-          </Section>
-          <Section title="7. Contact">
-            <p>For privacy concerns, contact us at privacy@streamvault.tv or through our <a href="/contact" className="text-blue-400 hover:text-blue-300">contact page</a>.</p>
+          <Section title="2. Support & Demandes de confidentialité">
+            <p>Pour toute question concernant vos données ou votre confidentialité, vous pouvez nous contacter directement sur notre canal WhatsApp officiel.</p>
+            <p className="pt-2">
+              <a
+                href="https://wa.me/212699105831"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] text-black font-bold text-sm hover:bg-[#20ba5a] transition-all shadow-lg"
+              >
+                Nous contacter sur WhatsApp
+              </a>
+            </p>
           </Section>
         </div>
       </div>

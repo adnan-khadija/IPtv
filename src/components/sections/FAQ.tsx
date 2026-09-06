@@ -28,7 +28,12 @@ export default function FAQ({ content }: FAQProps) {
   };
 
   return (
-    <section id="faq" className="section-padding relative overflow-hidden bg-[#0a0a0a]">
+    <section
+      id="faq"
+      className="section-padding relative overflow-hidden bg-[#0a0a0a]"
+      itemScope
+      itemType="https://schema.org/FAQPage"
+    >
       <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(229,9,20,0.03) 0%, transparent 60%)" }} />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,13 +73,16 @@ export default function FAQ({ content }: FAQProps) {
                   ? "border-[var(--color-accent)]/40 bg-[#141414]"
                   : "border-white/5 bg-[#141414] hover:border-white/20"
               }`}
+              itemScope
+              itemProp="mainEntity"
+              itemType="https://schema.org/Question"
             >
               <button
                 onClick={() => toggle(i)}
                 className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
                 aria-expanded={openId === i}
               >
-                <span className="text-sm font-semibold text-white pr-2">
+                <span className="text-sm font-semibold text-white pr-2" itemProp="name">
                   {item.q}
                 </span>
                 <span className={`shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-colors ${openId === i ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10' : 'border-white/10 bg-white/5'}`}>
@@ -86,21 +94,27 @@ export default function FAQ({ content }: FAQProps) {
                 </span>
               </button>
 
-              <AnimatePresence initial={false}>
-                {openId === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-5 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4">
-                      {item.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div
+                itemScope
+                itemProp="acceptedAnswer"
+                itemType="https://schema.org/Answer"
+              >
+                <AnimatePresence initial={false}>
+                  {openId === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 text-sm text-gray-400 leading-relaxed border-t border-white/5 pt-4" itemProp="text">
+                        {item.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </motion.div>
           ))}
         </div>

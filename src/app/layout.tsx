@@ -4,72 +4,125 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+const BASE_URL = "https://tvsuisse.ch";
+
 export const metadata: Metadata = {
   title: {
-    default: "StreamVault — Premium IPTV Service | 20,000+ Channels",
-    template: "%s | StreamVault",
+    default: "StreamVault — Service IPTV Premium | 20 000+ Chaînes HD",
+    template: "%s | StreamVault IPTV",
   },
   description:
-    "StreamVault delivers 20,000+ live channels, 40,000+ VOD titles, and high quality streaming. Starting at $14.99/month. Instant activation. 7-day money-back guarantee.",
+    "StreamVault : accédez à 20 000+ chaînes IPTV en direct, 40 000+ films & séries VOD. Qualité HD/4K, sans coupure, activation instantanée. Abonnement dès 15 CHF/mois.",
   keywords: [
-    "IPTV",
-    "live TV streaming",
-    "high quality streaming",
-    "IPTV subscription",
-    "cheap IPTV",
-    "best IPTV service",
-    "VOD streaming",
-    "streaming service",
+    "IPTV", "abonnement IPTV", "IPTV France", "IPTV Suisse", "IPTV Maroc",
+    "meilleur IPTV", "IPTV pas cher", "chaînes TV en direct", "VOD streaming",
+    "IPTV premium", "IPTV HD", "IPTV 4K", "smart IPTV", "IPTV subscription",
+    "best IPTV service", "live TV streaming", "IPTV Belgium", "IPTV Canada",
+    "StreamVault", "IPTV activation rapide", "IPTV sans engagement",
   ],
-  authors: [{ name: "StreamVault" }],
+  authors: [{ name: "StreamVault", url: BASE_URL }],
   creator: "StreamVault",
   publisher: "StreamVault",
-  metadataBase: new URL("https://streamvault.tv"),
+  metadataBase: new URL(BASE_URL),
   alternates: {
+    canonical: BASE_URL,
     languages: {
-      'en': '/en',
-      'fr': '/fr',
+      "fr": `${BASE_URL}/fr`,
+      "en": `${BASE_URL}/en`,
+      "x-default": `${BASE_URL}/fr`,
     },
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://streamvault.tv",
-    siteName: "StreamVault",
-    title: "StreamVault — Premium IPTV Service | 20,000+ Channels",
+    locale: "fr_FR",
+    alternateLocale: ["en_US"],
+    url: BASE_URL,
+    siteName: "StreamVault IPTV",
+    title: "StreamVault — IPTV Premium | 20 000+ Chaînes HD",
     description:
-      "StreamVault delivers 20,000+ live channels, 40,000+ VOD titles, and high quality streaming. Starting at $14.99/month.",
+      "20 000+ chaînes IPTV, 40 000+ films VOD. HD/4K sans coupure. Abonnement dès 15 CHF/mois. Activation instantanée via WhatsApp.",
     images: [
       {
-        url: "/og-image.png",
+        url: `${BASE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "StreamVault IPTV Service",
+        alt: "StreamVault — Service IPTV Premium",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "StreamVault — Premium IPTV Service",
-    description: "20,000+ live channels, 40,000+ VOD titles, high quality streaming from $14.99/month.",
-    images: ["/og-image.png"],
+    title: "StreamVault — IPTV Premium | 20 000+ Chaînes",
+    description: "20 000+ chaînes IPTV en direct, 40 000+ VOD. HD/4K sans coupure. Dès 15 CHF/mois.",
+    images: [`${BASE_URL}/og-image.png`],
     creator: "@StreamVaultTV",
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png" },
-      { url: "/favicon.ico" }
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.ico" },
     ],
+    apple: [{ url: "/favicon.png", sizes: "180x180" }],
     shortcut: "/favicon.ico",
   },
+  verification: {
+    google: "votre-code-google-search-console", // ← Remplacer par votre code Google Search Console
+  },
+  category: "technology",
+};
+
+// Schema.org JSON-LD global (Organization + WebSite)
+const globalSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#organization`,
+      name: "StreamVault",
+      url: BASE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/favicon.png`,
+        width: 180,
+        height: 180,
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        availableLanguage: ["French", "English", "Arabic"],
+        contactOption: "TollFree",
+      },
+      sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${BASE_URL}/#website`,
+      url: BASE_URL,
+      name: "StreamVault IPTV",
+      description: "Service IPTV premium avec 20 000+ chaînes et 40 000+ VOD",
+      publisher: { "@id": `${BASE_URL}/#organization` },
+      inLanguage: ["fr-FR", "en-US"],
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: `${BASE_URL}/fr/#channels?q={search_term_string}` },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -78,7 +131,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      </head>
       <body>
         <ThemeProvider>
           <Navbar />

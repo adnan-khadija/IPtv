@@ -181,7 +181,7 @@ export default function DashboardPage() {
             <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-4">Your Credentials</h3>
             <div className="space-y-3">
               {[
-                { label: "Portal URL", value: "http://portal.streamvault.tv" },
+                { label: "Portal URL", value: "http://portal.tvsuisse.ch" },
                 { label: "Username", value: mockUser.email },
                 { label: "Password", value: "••••••••" },
                 { label: "M3U URL", value: "Available in settings" },

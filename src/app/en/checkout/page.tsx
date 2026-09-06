@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { getPlanFromParam } from "@/lib/data/plans";
 import { Shield, Lock, Check, CreditCard, Zap, ChevronLeft, Monitor } from "lucide-react";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function CheckoutContent() {
   const searchParams = useSearchParams();
@@ -15,6 +16,9 @@ function CheckoutContent() {
   const [paymentMethod, setPaymentMethod] = useState<"card" | "paypal">("card");
   const [loading, setLoading] = useState(false);
   const [cardForm, setCardForm] = useState({ number: "", expiry: "", cvv: "", name: "" });
+  const [email, setEmail] = useState("");
+
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const savings = plan.originalPrice - plan.price;
   const perMonth = (plan.price / plan.months).toFixed(2);
@@ -43,7 +47,7 @@ function CheckoutContent() {
             Payment Successful! 🎉
           </h2>
           <p className="text-sm text-[var(--color-text-secondary)] mb-6">
-            Your <strong>{plan.name}</strong> subscription is now active. Check your email for credentials.
+            Your <strong>{plan.name}</strong> subscription is now active. Check your email (<strong>{email}</strong>) for credentials.
           </p>
           <div className="bg-[var(--color-bg-secondary)] rounded-xl p-4 text-left mb-6 space-y-2">
             <div className="flex justify-between text-sm">
@@ -166,7 +170,20 @@ function CheckoutContent() {
             className="md:col-span-3"
           >
             <div className="card-glass rounded-2xl p-6">
-              <h2 className="text-lg font-bold text-[var(--color-text-primary)] mb-6">Payment Details</h2>
+              {/* Customer Email */}
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-[var(--color-text-secondary)] mb-1.5 font-semibold">
+                  Email Address (For credentials delivery)
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-sm text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-accent)]/60 focus:ring-1 focus:ring-[var(--color-accent)]/20 transition-all"
+                  placeholder="you@example.com"
+                />
+              </div>
 
               {/* Payment method selector */}
               <div className="grid grid-cols-2 gap-3 mb-6">
@@ -283,24 +300,66 @@ function CheckoutContent() {
                   </button>
                 </form>
               ) : (
-                <div className="text-center py-8">
-                  <p className="text-sm text-[var(--color-text-secondary)] mb-6">
-                    You&apos;ll be redirected to PayPal to complete your payment of{" "}
-                    <strong className="text-[var(--color-text-primary)]">{plan.price} CHF</strong> securely.
+                <div className="py-4">
+                  <p className="text-sm text-[var(--color-text-secondary)] mb-6 text-center">
+                    Pay securely with PayPal or Credit Card via the gateway below:
                   </p>
-                  <button
-                    onClick={() => {
-                      setLoading(true);
-                      setTimeout(() => {
-                        setLoading(false);
-                        setStep("success");
-                      }, 2000);
-                    }}
-                    className="w-full py-4 text-sm font-bold text-white rounded-xl bg-blue-600 hover:bg-blue-500 transition-all flex items-center justify-center gap-2"
-                  >
-                    {loading ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : null}
-                    Continue with PayPal — {plan.price} CHF
-                  </button>
+                  
+                  {isEmailValid ? (
+                    <PayPalButtons
+                      style={{ layout: "vertical", label: "pay", color: "blue", shape: "rect" }}
+                      createOrder={async () => {
+                        try {
+                          const res = await fetch("/api/checkout/paypal/create-order", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ planId: plan.id, email }),
+                          });
+                          
+                          if (!res.ok) {
+                            throw new Error("Order creation failed");
+                          }
+                          
+                          const data = await res.json();
+                          return data.orderId;
+                        } catch (err) {
+                          console.error(err);
+                          alert("Failed to initiate PayPal transaction.");
+                          throw err;
+                        }
+                      }}
+                      onApprove={async (data) => {
+                        setLoading(true);
+                        try {
+                          const res = await fetch("/api/checkout/paypal/capture-order", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ orderId: data.orderID }),
+                          });
+                          
+                          const captureData = await res.json();
+                          if (captureData.success) {
+                            setStep("success");
+                          } else {
+                            alert("Payment verification failed: " + (captureData.error || "Unknown error"));
+                          }
+                        } catch (err) {
+                          console.error(err);
+                          alert("An error occurred verifying your payment.");
+                        } finally {
+                          setLoading(false);
+                        }
+                      }}
+                      onError={(err) => {
+                        console.error("PayPal Error:", err);
+                        alert("An error occurred during the PayPal checkout process.");
+                      }}
+                    />
+                  ) : (
+                    <div className="p-4 rounded-xl bg-blue-500/5 border border-blue-500/20 text-sm text-blue-400 text-center font-medium">
+                      Please enter a valid email address above to unlock payment options.
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -313,14 +372,22 @@ function CheckoutContent() {
 
 export default function CheckoutPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-[var(--color-accent)]/30 border-t-[var(--color-accent)] rounded-full animate-spin" />
-        </div>
-      }
+    <PayPalScriptProvider
+      options={{
+        clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "",
+        currency: "CHF",
+        intent: "capture",
+      }}
     >
-      <CheckoutContent />
-    </Suspense>
+      <Suspense
+        fallback={
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-[var(--color-accent)]/30 border-t-[var(--color-accent)] rounded-full animate-spin" />
+          </div>
+        }
+      >
+        <CheckoutContent />
+      </Suspense>
+    </PayPalScriptProvider>
   );
 }

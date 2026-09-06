@@ -109,10 +109,9 @@ export default function Footer() {
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} StreamVault. {c.footer.rights}
           </p>
-          <div className="flex items-center gap-4 text-xs text-gray-500">
-            <span>🔒 Secure payments</span>
-            <span className="hidden sm:inline">•</span>
-            <span>256-bit SSL Encryption</span>
+          <div className="flex items-center gap-2 text-xs text-[#25D366]">
+            <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+            <span>WhatsApp 24h/7j</span>
           </div>
         </div>
       </div>

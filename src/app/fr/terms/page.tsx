@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Terms of Service" };
+export const metadata: Metadata = { title: "Conditions d'utilisation" };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -16,33 +16,31 @@ export default function TermsPage() {
     <div className="min-h-screen pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <div className="mb-10">
-          <h1 className="text-4xl font-black text-[var(--color-text-primary)] mb-2">Terms of Service</h1>
-          <p className="text-sm text-[var(--color-text-muted)]">Last updated: January 1, 2025</p>
+          <h1 className="text-4xl font-black text-[var(--color-text-primary)] mb-2">Conditions d'utilisation</h1>
+          <p className="text-sm text-[var(--color-text-muted)]">Dernière mise à jour : 2025</p>
         </div>
         <div className="card-glass rounded-2xl p-8">
-          <Section title="1. Acceptance of Terms">
-            <p>By accessing or using StreamVault services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our service.</p>
+          <Section title="1. Acceptation des conditions">
+            <p>En accédant aux services StreamVault, vous acceptez d'être lié par ces conditions d'utilisation. Pour toute assistance, notre équipe est à votre disposition 24/7 via WhatsApp.</p>
           </Section>
-          <Section title="2. Service Description">
-            <p>StreamVault provides an IPTV streaming service that allows subscribers to access live television channels and video-on-demand content. The service is provided on a subscription basis.</p>
+          <Section title="2. Description du service">
+            <p>StreamVault propose un service de streaming IPTV premium permettant d'accéder à des chaînes de télévision en direct et du contenu vidéo à la demande (VOD).</p>
           </Section>
-          <Section title="3. Subscription & Payment">
-            <p>Subscriptions are billed in advance. All prices are listed in USD. Payment is processed securely through Stripe or PayPal. By providing payment information, you authorize us to charge the applicable subscription fees.</p>
+          <Section title="3. Souscription & Activation">
+            <p>Toutes les souscriptions et demandes d'activation s'effectuent directement via notre support client WhatsApp instantané.</p>
           </Section>
-          <Section title="4. Refund Policy">
-            <p>We offer a 7-day money-back guarantee for new subscriptions. Refund requests must be submitted within 7 days of purchase. Refunds will be processed to the original payment method within 5–10 business days.</p>
-          </Section>
-          <Section title="5. Acceptable Use">
-            <p>You may not share, resell, or redistribute your subscription credentials. You may not use the service for any unlawful purpose. Violation of these terms may result in immediate account termination without refund.</p>
-          </Section>
-          <Section title="6. Limitation of Liability">
-            <p>StreamVault is not liable for any indirect, incidental, or consequential damages arising from use of the service. Our total liability shall not exceed the amount paid for your subscription in the past 30 days.</p>
-          </Section>
-          <Section title="7. Changes to Terms">
-            <p>We reserve the right to update these Terms at any time. Continued use of the service after changes constitutes acceptance of the new Terms.</p>
-          </Section>
-          <Section title="8. Contact">
-            <p>For questions about these Terms, contact us at legal@streamvault.tv or through our <a href="/contact" className="text-blue-400 hover:text-blue-300">contact page</a>.</p>
+          <Section title="4. Support & Contact unique">
+            <p>Le seul moyen officiel de contacter notre service client et notre support technique est notre canal WhatsApp officiel.</p>
+            <p className="pt-2">
+              <a
+                href="https://wa.me/212699105831"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] text-black font-bold text-sm hover:bg-[#20ba5a] transition-all shadow-lg"
+              >
+                Contacter le support WhatsApp 24/7
+              </a>
+            </p>
           </Section>
         </div>
       </div>

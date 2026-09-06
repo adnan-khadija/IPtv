@@ -17,28 +17,24 @@ export default function RefundPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <div className="mb-10">
           <h1 className="text-4xl font-black text-[var(--color-text-primary)] mb-2">Refund Policy</h1>
-          <p className="text-sm text-[var(--color-text-muted)]">Last updated: January 1, 2025</p>
+          <p className="text-sm text-[var(--color-text-muted)]">Last updated: 2025</p>
         </div>
         <div className="card-glass rounded-2xl p-8">
-          <div className="mb-8 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-            <p className="text-sm font-semibold text-green-400">✅ 7-Day Money-Back Guarantee</p>
-            <p className="text-xs text-green-300/80 mt-1">If you&apos;re not satisfied within the first 7 days, we&apos;ll give you a full refund — no questions asked.</p>
-          </div>
-          <Section title="Eligibility for Refund">
-            <p>You are eligible for a full refund if you request it within 7 calendar days of your initial subscription purchase.</p>
-            <p>Refund requests for renewal subscriptions will be considered on a case-by-case basis.</p>
+          <Section title="1. Satisfaction Guarantee">
+            <p>We strive to provide 100% satisfaction. If you encounter any technical issues, reach out to our WhatsApp support team immediately.</p>
           </Section>
-          <Section title="Non-Refundable Situations">
-            <p>Refunds will not be issued if the subscription has been active for more than 7 days, if the account has been suspended due to Terms of Service violations, or for remaining time on a partially-used subscription beyond the 7-day window.</p>
-          </Section>
-          <Section title="How to Request a Refund">
-            <p>1. Contact us at refunds@streamvault.tv or via our <a href="/contact" className="text-blue-400 hover:text-blue-300">contact page</a>.</p>
-            <p>2. Include your order number and email address used to sign up.</p>
-            <p>3. We will process your refund within 1–2 business days.</p>
-            <p>4. Funds will appear in your account within 5–10 business days depending on your bank.</p>
-          </Section>
-          <Section title="Contact Us">
-            <p>For refund requests, reach out at refunds@streamvault.tv. Our team is available 24/7.</p>
+          <Section title="2. Refund & Support Requests">
+            <p>All refund and technical support inquiries are handled exclusively via our official 24/7 WhatsApp channel.</p>
+            <p className="pt-2">
+              <a
+                href="https://wa.me/212699105831"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] text-black font-bold text-sm hover:bg-[#20ba5a] transition-all shadow-lg"
+              >
+                Contact WhatsApp Support
+              </a>
+            </p>
           </Section>
         </div>
       </div>
