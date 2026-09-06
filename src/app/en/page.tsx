@@ -12,7 +12,7 @@ import { contentEn } from "@/lib/content/en";
 const BASE_URL = "https://tvsuisse.ch";
 
 export const metadata: Metadata = {
-  title: "StreamVault — Best IPTV Subscription 2024 | 20,000+ HD Channels",
+  title: "StreamVault",
   description:
     "Best IPTV service in Europe & worldwide. 20,000+ live HD/4K channels, 40,000+ VOD movies & series. No buffering, instant activation via WhatsApp. Starting at 15 CHF/month.",
   keywords: [

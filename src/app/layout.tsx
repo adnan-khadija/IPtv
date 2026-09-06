@@ -8,8 +8,8 @@ const BASE_URL = "https://tvsuisse.ch";
 
 export const metadata: Metadata = {
   title: {
-    default: "StreamVault — Service IPTV Premium | 20 000+ Chaînes HD",
-    template: "%s | StreamVault IPTV",
+    default: "StreamVault",
+    template: "%s | StreamVault",
   },
   description:
     "StreamVault : accédez à 20 000+ chaînes IPTV en direct, 40 000+ films & séries VOD. Qualité HD/4K, sans coupure, activation instantanée. Abonnement dès 15 CHF/mois.",

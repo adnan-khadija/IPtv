@@ -12,7 +12,7 @@ import { contentFr } from "@/lib/content/fr";
 const BASE_URL = "https://tvsuisse.ch";
 
 export const metadata: Metadata = {
-  title: "StreamVault — Abonnement IPTV Premium | 20 000+ Chaînes HD France Suisse",
+  title: "StreamVault",
   description:
     "Meilleur service IPTV en France, Suisse, Belgique et Maroc. 20 000+ chaînes HD/4K en direct, 40 000+ films & séries VOD. Sans coupure, activation instantanée par WhatsApp. Dès 15 CHF/mois.",
   keywords: [
