@@ -29,15 +29,15 @@ const CHANNELS_DATA: Record<string, ChannelItem[]> = {
     { name: "SRF 1 HD", logoText: "SRF 1", logoBg: "bg-red-800", logoFg: "text-white", badge: "FHD", genre: "News & Doc" },
     { name: "SRF zwei HD", logoText: "SRF 2", logoBg: "bg-zinc-800", logoFg: "text-red-500", badge: "FHD", genre: "Sport & Divertissement" },
     { name: "RSI LA 1 HD", logoText: "RSI 1", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
-    { name: "Blue Zoom HD", logoText: "blue", logoBg: "bg-blue-600", logoFg: "text-white", badge: "4K UHD", genre: "Sports" },
-    { name: "Blue Sports 1 HD", logoText: "blue SPORT", logoBg: "bg-blue-800", logoFg: "text-white", badge: "4K UHD", genre: "Live Sports" },
+    { name: "Blue Zoom HD", logoText: "blue", logoBg: "bg-blue-600", logoFg: "text-white", badge: "Haute Qualité", genre: "Sports" },
+    { name: "Blue Sports 1 HD", logoText: "blue SPORT", logoBg: "bg-blue-800", logoFg: "text-white", badge: "Haute Qualité", genre: "Live Sports" },
     { name: "MySports HD", logoText: "MySports", logoBg: "bg-teal-600", logoFg: "text-black", badge: "FHD", genre: "Ice Hockey & Sports" },
   ],
   fr: [
     { name: "TF1 HD", logoText: "TF1", logoBg: "bg-blue-600", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
     { name: "France 2 HD", logoText: "2", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
     { name: "M6 HD", logoText: "M6", logoBg: "bg-orange-500", logoFg: "text-white", badge: "FHD", genre: "Divertissement" },
-    { name: "Canal+ HD", logoText: "CANAL+", logoBg: "bg-black border border-white/20", logoFg: "text-white", badge: "4K UHD", genre: "Premium Cinema & Sport" },
+    { name: "Canal+ HD", logoText: "CANAL+", logoBg: "bg-black border border-white/20", logoFg: "text-white", badge: "Haute Qualité", genre: "Premium Cinema & Sport" },
     { name: "RMC Sport 1 HD", logoText: "RMC SPORT", logoBg: "bg-purple-900", logoFg: "text-yellow-400", badge: "FHD", genre: "Ligue des Champions" },
     { name: "beIN Sports 1 HD", logoText: "beIN", logoBg: "bg-purple-600", logoFg: "text-white", badge: "FHD", genre: "Football & Sports" },
     { name: "Eurosport 1 HD", logoText: "EUROSPORT", logoBg: "bg-blue-900", logoFg: "text-white", badge: "FHD", genre: "Multi-Sports" },
@@ -46,10 +46,10 @@ const CHANNELS_DATA: Record<string, ChannelItem[]> = {
   ukUs: [
     { name: "BBC One HD", logoText: "BBC 1", logoBg: "bg-red-700", logoFg: "text-white", badge: "FHD", genre: "General" },
     { name: "ITV 1 HD", logoText: "itv 1", logoBg: "bg-blue-500", logoFg: "text-white", badge: "FHD", genre: "General" },
-    { name: "Sky Sports Main Event", logoText: "sky sports", logoBg: "bg-red-600", logoFg: "text-white", badge: "4K UHD", genre: "Premier League" },
+    { name: "Sky Sports Main Event", logoText: "sky sports", logoBg: "bg-red-600", logoFg: "text-white", badge: "Haute Qualité", genre: "Premier League" },
     { name: "TNT Sports 1 HD", logoText: "TNT SPORTS", logoBg: "bg-pink-700", logoFg: "text-white", badge: "FHD", genre: "Live Sports" },
-    { name: "Sky Cinema Premiere", logoText: "sky cinema", logoBg: "bg-yellow-500", logoFg: "text-black", badge: "4K UHD", genre: "Latest Blockbusters" },
-    { name: "HBO HD", logoText: "HBO", logoBg: "bg-black border border-white/10", logoFg: "text-white", badge: "4K UHD", genre: "Original Series" },
+    { name: "Sky Cinema Premiere", logoText: "sky cinema", logoBg: "bg-yellow-500", logoFg: "text-black", badge: "Haute Qualité", genre: "Latest Blockbusters" },
+    { name: "HBO HD", logoText: "HBO", logoBg: "bg-black border border-white/10", logoFg: "text-white", badge: "Haute Qualité", genre: "Original Series" },
     { name: "ESPN HD", logoText: "ESPN", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "US Sports" },
     { name: "NBC HD", logoText: "NBC", logoBg: "bg-purple-800", logoFg: "text-white", badge: "FHD", genre: "News & Shows" }
   ]
