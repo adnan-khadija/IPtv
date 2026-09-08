@@ -56,14 +56,15 @@ const CHANNELS_DATA: Record<string, ChannelItem[]> = {
 };
 
 const VOD_DATA: VodItem[] = [
-  { title: "Dune: Part Two", image: "https://images.unsplash.com/photo-1547483238-f400e65ccd56?q=80&w=400", rating: "4.9", genre: "Action, Sci-Fi", year: "2024", platform: "Cinema" },
-  { title: "Interstellar", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400", rating: "4.9", genre: "Sci-Fi, Adventure", year: "2014", platform: "Paramount" },
-  { title: "House of the Dragon", image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=400", rating: "4.8", genre: "Drama, Fantasy", year: "2024", platform: "HBO Max" },
-  { title: "Gladiator II", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=400", rating: "4.7", genre: "Action, Drama", year: "2024", platform: "Cinema" },
-  { title: "The Last of Us", image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=400", rating: "4.8", genre: "Action, Adventure", year: "2023", platform: "HBO Max" },
-  { title: "Stranger Things", image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=400", rating: "4.9", genre: "Drama, Fantasy", year: "2024", platform: "Netflix" },
-  { title: "Wednesday", image: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=400", rating: "4.6", genre: "Comedy, Fantasy", year: "2022", platform: "Netflix" },
-  { title: "Oppenheimer", image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=400", rating: "4.9", genre: "Biography, Drama", year: "2023", platform: "Universal" },
+  { title: "Dune: Part Two", image: "/films/dunepart2.png", rating: "4.9", genre: "Action, Sci-Fi", year: "2024", platform: "Cinema" },
+  { title: "Interstellar", image: "/films/interstellar.png", rating: "4.9", genre: "Sci-Fi, Adventure", year: "2014", platform: "Paramount" },
+  { title: "House of the Dragon", image: "/films/hoseOfDragon.png", rating: "4.8", genre: "Drama, Fantasy", year: "2024", platform: "HBO Max" },
+  { title: "Gladiator II", image: "/films/gladiator2.png", rating: "4.7", genre: "Action, Drama", year: "2024", platform: "Cinema" },
+  { title: "The Last of Us", image: "/films/theLastOfUs.png", rating: "4.8", genre: "Action, Adventure", year: "2023", platform: "HBO Max" },
+  { title: "Stranger Things", image: "/films/strangerThings.png", rating: "4.9", genre: "Drama, Fantasy", year: "2024", platform: "Netflix" },
+  { title: "Wednesday", image: "/films/wednesday.png", rating: "4.6", genre: "Comedy, Fantasy", year: "2022", platform: "Netflix" },
+  { title: "Oppenheimer", image: "/films/oppenheimer.png", rating: "4.9", genre: "Biography, Drama", year: "2023", platform: "Universal" },
+
 ];
 
 interface ChannelsAndVODProps {
@@ -97,7 +98,8 @@ export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
   return (
     <section id="channels" className="relative py-20 bg-[#050505] overflow-hidden border-b border-white/5">
       {/* CSS Styles for marquee scrolling */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes scroll-left {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -149,11 +151,10 @@ export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-2.5 rounded text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
-                    activeTab === tab
-                      ? "bg-[var(--color-accent)] text-white shadow-lg shadow-red-600/20"
-                      : "bg-[#141414] text-gray-400 hover:text-white hover:bg-[#1a1a1a] border border-white/5"
-                  }`}
+                  className={`px-5 py-2.5 rounded text-sm font-bold transition-all duration-300 flex items-center gap-2 ${activeTab === tab
+                    ? "bg-[var(--color-accent)] text-white shadow-lg shadow-red-600/20"
+                    : "bg-[#141414] text-gray-400 hover:text-white hover:bg-[#1a1a1a] border border-white/5"
+                    }`}
                 >
                   {c.countries[tab]}
                 </button>
@@ -253,7 +254,7 @@ export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
                   </span>
                   {/* Resolution Badge */}
                   <span className="absolute bottom-2 right-2 text-[9px] font-bold bg-[var(--color-accent)] px-1.5 py-0.5 rounded text-white tracking-wide">
-                    4K
+                    Haute Qualité
                   </span>
                 </div>
 

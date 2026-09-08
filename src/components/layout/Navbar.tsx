@@ -7,15 +7,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight, Home, Tv, HelpCircle, MessageCircle } from "lucide-react";
 import { contentFr } from "@/lib/content/fr";
 import { contentEn } from "@/lib/content/en";
+import { contentDe } from "@/lib/content/de";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname() || "";
   
-  const isEn = pathname.startsWith("/en");
-  const currentLang = isEn ? "en" : "fr";
-  const content = isEn ? contentEn.nav : contentFr.nav;
+  let currentLang = "fr";
+  if (pathname.startsWith("/en")) currentLang = "en";
+  if (pathname.startsWith("/de")) currentLang = "de";
+
+  const content = currentLang === "en" ? contentEn.nav : currentLang === "de" ? contentDe.nav : contentFr.nav;
 
   const navLinks = [
     { href: `/${currentLang}/`, label: content.home, icon: Home },
@@ -30,10 +33,17 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const otherLang = isEn ? "fr" : "en";
-  const otherLangFlag = isEn ? "🇫🇷 FR" : "🇬🇧 EN";
-  // Simple regex to replace current lang in path
-  const switchLangHref = pathname.replace(`/${currentLang}`, `/${otherLang}`);
+  const langs = [
+    { code: "fr", flag: "🇫🇷 FR" },
+    { code: "en", flag: "🇬🇧 EN" },
+    { code: "de", flag: "🇩🇪 DE" },
+  ];
+  const currentIndex = langs.findIndex(l => l.code === currentLang);
+  const nextLangObj = langs[(currentIndex + 1) % langs.length];
+
+  const switchLangHref = pathname.replace(`/${currentLang}`, `/${nextLangObj.code}`);
+  const otherLangFlag = nextLangObj.flag;
+  const otherLang = nextLangObj.code;
 
   return (
     <>
@@ -85,12 +95,21 @@ export default function Navbar() {
 
             {/* Right CTA */}
             <div className="hidden md:flex items-center gap-4">
-              <Link 
-                href={switchLangHref || `/${otherLang}`}
-                className="text-sm font-medium text-gray-400 hover:text-white transition-colors flex items-center gap-1"
-              >
-                {otherLangFlag}
-              </Link>
+              <div className="flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
+                {langs.map((l) => (
+                  <Link
+                    key={l.code}
+                    href={pathname.replace(`/${currentLang}`, `/${l.code}`)}
+                    className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all ${
+                      currentLang === l.code
+                        ? "bg-[var(--color-accent)] text-white"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {l.code.toUpperCase()}
+                  </Link>
+                ))}
+              </div>
               
               <Link
                 href={`/${currentLang}/#pricing`}
@@ -101,13 +120,22 @@ export default function Navbar() {
             </div>
 
             {/* Mobile buttons */}
-            <div className="flex md:hidden items-center gap-4">
-              <Link 
-                href={switchLangHref || `/${otherLang}`}
-                className="text-sm font-medium text-gray-400"
-              >
-                {otherLangFlag.split(' ')[0]} {/* Just the flag on mobile */}
-              </Link>
+            <div className="flex md:hidden items-center gap-3">
+              <div className="flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
+                {langs.map((l) => (
+                  <Link
+                    key={l.code}
+                    href={pathname.replace(`/${currentLang}`, `/${l.code}`)}
+                    className={`px-2 py-1 text-[10px] font-bold rounded-full transition-all ${
+                      currentLang === l.code
+                        ? "bg-[var(--color-accent)] text-white"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {l.code.toUpperCase()}
+                  </Link>
+                ))}
+              </div>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="p-2 rounded text-gray-300 hover:bg-white/5 transition-all"
