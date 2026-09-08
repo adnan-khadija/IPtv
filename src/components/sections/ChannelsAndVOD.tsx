@@ -145,21 +145,7 @@ export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
               </div>
             </div>
 
-            {/* Target Country Tabs */}
-            <div className="flex flex-wrap gap-2">
-              {(["ch", "fr", "ukUs"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-2.5 rounded text-sm font-bold transition-all duration-300 flex items-center gap-2 ${activeTab === tab
-                    ? "bg-[var(--color-accent)] text-white shadow-lg shadow-red-600/20"
-                    : "bg-[#141414] text-gray-400 hover:text-white hover:bg-[#1a1a1a] border border-white/5"
-                    }`}
-                >
-                  {c.countries[tab]}
-                </button>
-              ))}
-            </div>
+
           </div>
         </div>
 
