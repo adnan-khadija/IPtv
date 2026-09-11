@@ -7,6 +7,9 @@ interface DevicesProps {
   content?: {
     title: string;
     subtitle: string;
+    smartTv?: string;
+    computer?: string;
+    mobile?: string;
   };
 }
 
@@ -39,15 +42,15 @@ export default function Devices({ content }: DevicesProps) {
         <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-20 opacity-70">
           <div className="flex flex-col items-center gap-3">
             <Tv size={48} strokeWidth={1} className="text-gray-300" />
-            <span className="text-sm font-bold text-gray-400">Smart TV</span>
+            <span className="text-sm font-bold text-gray-400">{c.smartTv ?? "Smart TV"}</span>
           </div>
           <div className="flex flex-col items-center gap-3">
             <Monitor size={48} strokeWidth={1} className="text-gray-300" />
-            <span className="text-sm font-bold text-gray-400">Computer</span>
+            <span className="text-sm font-bold text-gray-400">{c.computer ?? "Computer"}</span>
           </div>
           <div className="flex flex-col items-center gap-3">
             <Smartphone size={48} strokeWidth={1} className="text-gray-300" />
-            <span className="text-sm font-bold text-gray-400">Mobile & Tablet</span>
+            <span className="text-sm font-bold text-gray-400">{c.mobile ?? "Mobile & Tablet"}</span>
           </div>
         </div>
       </div>

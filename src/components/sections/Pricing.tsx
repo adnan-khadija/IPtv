@@ -20,6 +20,7 @@ interface PricingProps {
     durations: Record<number | string, string>;
     featuresList: string[];
     cta: string;
+    whatsappMessage?: string;
     reassurance: string[];
   };
 }
@@ -27,7 +28,9 @@ interface PricingProps {
 export default function Pricing({ content }: PricingProps) {
   const pathname = usePathname() || "";
   const isEn = pathname.startsWith("/en");
-  const lang = isEn ? "en" : "fr";
+  const isDe = pathname.startsWith("/de");
+  const lang = isEn ? "en" : isDe ? "de" : "fr";
+  void lang;
 
   if (!content) return null;
 
@@ -121,7 +124,9 @@ export default function Pricing({ content }: PricingProps) {
                   {/* CTA */}
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                      `Bonjour, je suis intéressé(e) par l'offre ${c.durations[months]} à ${data.promo} CHF. Je souhaite souscrire.`
+                      (c.whatsappMessage ?? `Bonjour, je suis intéressé(e) par l'offre {plan} à {price} CHF. Je souhaite souscrire.`)
+                        .replace("{plan}", c.durations[months])
+                        .replace("{price}", String(data.promo))
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"

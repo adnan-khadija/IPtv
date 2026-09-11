@@ -1,21 +1,12 @@
-import { MetadataRoute } from "next";
-
-export const dynamic = "force-static";
+import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: ["/", "/fr/", "/en/"],
-        disallow: ["/_next/"],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: ["/fr/", "/en/", "/fr/contact", "/en/contact"],
-      },
-    ],
-    sitemap: "https://tvsuisse.ch/sitemap.xml",
-    host: "https://tvsuisse.ch",
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/api/'],
+    },
+    sitemap: 'https://tvsuisse.ch/sitemap.xml',
   };
 }

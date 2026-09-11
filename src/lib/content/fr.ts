@@ -44,6 +44,7 @@ export const contentFr = {
       perMonth: "soit {price} CHF/mois",
     },
     cta: "Commander mon IPTV",
+    whatsappMessage: "Bonjour, je suis intéressé(e) par l'offre {plan} à {price} CHF. Je souhaite souscrire.",
     featuresList: [
       "20 000 Chaînes TV",
       "90 000 Films et Séries",
@@ -73,6 +74,9 @@ export const contentFr = {
   devices: {
     title: "Votre IPTV sur tous vos appareils",
     subtitle: "Installez votre abonnement facilement sur Smart TV (Samsung, LG), Box Android, Apple TV, Smartphone, Tablette ou PC via nos applications recommandées (Smarters Pro, IBO Player...).",
+    smartTv: "Smart TV",
+    computer: "Ordinateur",
+    mobile: "Mobile & Tablette",
   },
   faq: {
     title: "Questions sur l'IPTV",
@@ -121,6 +125,10 @@ export const contentFr = {
     statusOnline: "En ligne",
     placeholderMessage: "Tapez un message...",
     today: "AUJOURD'HUI",
+    authenticBadge: "Avis Clients Authentiques",
+    realScreenshots: "Captures d'écran WhatsApp réelles",
+    enlargeCapture: "Agrandir la capture",
+    verifiedMessage: "Message d'origine vérifié",
     reviews: [
       {
         name: "Julien M. (Genève)",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { contentFr } from "@/lib/content/fr";
 import { contentEn } from "@/lib/content/en";
+import { contentDe } from "@/lib/content/de";
 
 import type { SVGProps } from "react";
 
@@ -18,9 +19,10 @@ const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) => (
 
 export default function Footer() {
   const pathname = usePathname() || "";
-  const isEn = pathname.startsWith("/en");
-  const lang = isEn ? "en" : "fr";
-  const c = isEn ? contentEn : contentFr;
+  let lang = "fr";
+  if (pathname.startsWith("/en")) lang = "en";
+  if (pathname.startsWith("/de")) lang = "de";
+  const c = lang === "en" ? contentEn : lang === "de" ? contentDe : contentFr;
 
   const footerLinks = {
     product: [

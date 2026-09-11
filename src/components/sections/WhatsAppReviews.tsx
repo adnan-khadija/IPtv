@@ -19,6 +19,10 @@ interface WhatsAppReviewsProps {
     statusOnline: string;
     placeholderMessage: string;
     today: string;
+    authenticBadge?: string;
+    realScreenshots?: string;
+    enlargeCapture?: string;
+    verifiedMessage?: string;
     reviews: unknown[];
   };
 }
@@ -86,7 +90,7 @@ export default function WhatsAppReviews({ content }: WhatsAppReviewsProps) {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-4"
           >
             <MessageCircle size={14} className="fill-emerald-400 text-emerald-400" />
-            <span>Avis Clients Authentiques</span>
+            <span>{ c.authenticBadge ?? "Avis Clients Authentiques" }</span>
           </motion.div>
 
           <motion.h2
@@ -141,7 +145,7 @@ export default function WhatsAppReviews({ content }: WhatsAppReviewsProps) {
                     </div>
                     <p className="text-[11px] text-emerald-400/90 font-medium flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
-                      Captures d'écran WhatsApp réelles
+                      { c.realScreenshots ?? "Captures d'écran WhatsApp réelles" }
                     </p>
                   </div>
                 </div>
@@ -182,7 +186,7 @@ export default function WhatsAppReviews({ content }: WhatsAppReviewsProps) {
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
                         <span className="px-4 py-2 rounded-full bg-emerald-500 text-black text-xs font-bold tracking-wide flex items-center gap-2 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
                           <Maximize2 size={14} />
-                          Agrandir la capture
+                          { c.enlargeCapture ?? "Agrandir la capture" }
                         </span>
                       </div>
                     </div>
@@ -193,7 +197,7 @@ export default function WhatsAppReviews({ content }: WhatsAppReviewsProps) {
               {/* Card Footer Bar */}
               <div className="bg-[#111b21] px-5 py-3 border-t border-white/5 flex items-center justify-between text-xs text-gray-400">
                 <span className="flex items-center gap-1 text-emerald-400/80 font-medium">
-                  <CheckCheck size={15} /> Message d'origine vérifié
+                  <CheckCheck size={15} /> { c.verifiedMessage ?? "Message d'origine vérifié" }
                 </span>
                 <span className="text-[11px] text-gray-500 font-mono">
                   {current + 1} / {total}
