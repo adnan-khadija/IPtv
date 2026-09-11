@@ -38,12 +38,16 @@ export default function Navbar() {
     { code: "en", flag: "🇬🇧 EN" },
     { code: "de", flag: "🇩🇪 DE" },
   ];
-  const currentIndex = langs.findIndex(l => l.code === currentLang);
-  const nextLangObj = langs[(currentIndex + 1) % langs.length];
 
-  const switchLangHref = pathname.replace(`/${currentLang}`, `/${nextLangObj.code}`);
-  const otherLangFlag = nextLangObj.flag;
-  const otherLang = nextLangObj.code;
+  const getLangPath = (targetLang: string) => {
+    if (!pathname || pathname === "/") return `/${targetLang}`;
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length > 0 && ["fr", "en", "de"].includes(parts[0])) {
+      parts[0] = targetLang;
+      return "/" + parts.join("/");
+    }
+    return `/${targetLang}${pathname.startsWith("/") ? "" : "/"}${pathname}`;
+  };
 
   return (
     <>
@@ -99,7 +103,7 @@ export default function Navbar() {
                 {langs.map((l) => (
                   <Link
                     key={l.code}
-                    href={pathname.replace(`/${currentLang}`, `/${l.code}`)}
+                    href={getLangPath(l.code)}
                     className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all ${
                       currentLang === l.code
                         ? "bg-[var(--color-accent)] text-white"
@@ -125,7 +129,7 @@ export default function Navbar() {
                 {langs.map((l) => (
                   <Link
                     key={l.code}
-                    href={pathname.replace(`/${currentLang}`, `/${l.code}`)}
+                    href={getLangPath(l.code)}
                     className={`px-2 py-1 text-[10px] font-bold rounded-full transition-all ${
                       currentLang === l.code
                         ? "bg-[var(--color-accent)] text-white"
