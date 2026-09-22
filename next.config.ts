@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   // with nginx, and what any plain web host can take by upload.
   output: "export",
 
-  // Writes /fr/index.html rather than /fr.html, so Apache, nginx and cPanel
-  // all resolve the URLs without extra rewrite rules.
+  // Writes index.html in each folder so Apache, nginx and cPanel
+  // resolve the URLs without extra rewrite rules.
   trailingSlash: true,
 
   images: {
@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
   },
 
   // NOTE: next.config redirects() and server-side redirect() are not supported
-  // by output: "export". The root "/" -> "/fr" hop is done in src/app/page.tsx.
+  // by output: "export".
 };
 
 export default nextConfig;
