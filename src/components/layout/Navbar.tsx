@@ -1,53 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight, Home, Tv, HelpCircle, MessageCircle } from "lucide-react";
-import { contentFr } from "@/lib/content/fr";
-import { contentEn } from "@/lib/content/en";
 import { contentDe } from "@/lib/content/de";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname() || "";
-  
-  let currentLang = "fr";
-  if (pathname.startsWith("/en")) currentLang = "en";
-  if (pathname.startsWith("/de")) currentLang = "de";
-
-  const content = currentLang === "en" ? contentEn.nav : currentLang === "de" ? contentDe.nav : contentFr.nav;
+  const content = contentDe.nav;
 
   const navLinks = [
-    { href: `/${currentLang}/`, label: content.home, icon: Home },
-    { href: `/${currentLang}/#channels`, label: content.channels, icon: Tv },
-    { href: `/${currentLang}/#faq`, label: content.faq, icon: HelpCircle },
-    { href: `/${currentLang}/contact`, label: content.contact, icon: MessageCircle },
+    { href: "/", label: content.home, icon: Home },
+    { href: "/channels", label: content.channels, icon: Tv },
+    { href: "/#faq", label: content.faq, icon: HelpCircle },
+    { href: "/contact", label: content.contact, icon: MessageCircle },
   ];
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const langs = [
-    { code: "fr", flag: "🇫🇷 FR" },
-    { code: "en", flag: "🇬🇧 EN" },
-    { code: "de", flag: "🇩🇪 DE" },
-  ];
-
-  const getLangPath = (targetLang: string) => {
-    if (!pathname || pathname === "/") return `/${targetLang}`;
-    const parts = pathname.split("/").filter(Boolean);
-    if (parts.length > 0 && ["fr", "en", "de"].includes(parts[0])) {
-      parts[0] = targetLang;
-      return "/" + parts.join("/");
-    }
-    return `/${targetLang}${pathname.startsWith("/") ? "" : "/"}${pathname}`;
-  };
 
   return (
     <>
@@ -60,16 +28,12 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-[#050505]/95 backdrop-blur-xl border-b border-white/10"
-            : "bg-transparent"
-        }`}
+        className="relative z-50 bg-transparent"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link href={`/${currentLang}`} className="flex items-center gap-2 group">
+            <Link href="/" className="flex items-center gap-2 group">
               <svg className="w-8 h-8 text-[var(--color-accent)] fill-[var(--color-accent)]/10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="2" y="5" width="20" height="14" rx="2.5" stroke="currentColor" strokeWidth="2" />
                 <path d="M17 2H7L12 5L17 2Z" fill="currentColor"/>
@@ -99,24 +63,8 @@ export default function Navbar() {
 
             {/* Right CTA */}
             <div className="hidden md:flex items-center gap-4">
-              <div className="flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
-                {langs.map((l) => (
-                  <Link
-                    key={l.code}
-                    href={getLangPath(l.code)}
-                    className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all ${
-                      currentLang === l.code
-                        ? "bg-[var(--color-accent)] text-white"
-                        : "text-gray-400 hover:text-white"
-                    }`}
-                  >
-                    {l.code.toUpperCase()}
-                  </Link>
-                ))}
-              </div>
-              
               <Link
-                href={`/${currentLang}/#pricing`}
+                href="/#pricing"
                 className="flex items-center gap-1.5 px-6 py-2 text-sm font-bold text-white rounded bg-[var(--color-accent)] hover:bg-[#b20710] shadow-lg glow-red-hover transition-all duration-200"
               >
                 {content.getStarted} <ChevronRight size={14} />
@@ -125,71 +73,56 @@ export default function Navbar() {
 
             {/* Mobile buttons */}
             <div className="flex md:hidden items-center gap-3">
-              <div className="flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/10">
-                {langs.map((l) => (
-                  <Link
-                    key={l.code}
-                    href={getLangPath(l.code)}
-                    className={`px-2 py-1 text-[10px] font-bold rounded-full transition-all ${
-                      currentLang === l.code
-                        ? "bg-[var(--color-accent)] text-white"
-                        : "text-gray-400 hover:text-white"
-                    }`}
-                  >
-                    {l.code.toUpperCase()}
-                  </Link>
-                ))}
-              </div>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="p-2 rounded text-gray-300 hover:bg-white/5 transition-all"
-                aria-label="Toggle menu"
+                aria-label="Menu öffnen"
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
             </div>
           </div>
         </div>
-      </motion.header>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[104px] z-40 bg-[#0a0a0a]/98 backdrop-blur-xl border-b border-white/10 md:hidden"
-          >
-            <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-              {navLinks.map((link) => {
-                const Icon = link.icon;
-                return (
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-x-0 top-full z-40 bg-[#0a0a0a]/98 backdrop-blur-xl border-b border-white/10 md:hidden"
+            >
+              <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+                {navLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="px-4 py-3 text-sm font-medium text-gray-300 hover:text-white rounded-lg hover:bg-white/5 transition-all flex items-center gap-2.5"
+                    >
+                      <Icon size={16} className="text-[var(--color-accent)]" />
+                      {link.label}
+                    </Link>
+                  );
+                })}
+                <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
                   <Link
-                    key={link.href}
-                    href={link.href}
+                    href="/#pricing"
                     onClick={() => setMobileOpen(false)}
-                    className="px-4 py-3 text-sm font-medium text-gray-300 hover:text-white rounded-lg hover:bg-white/5 transition-all flex items-center gap-2.5"
+                    className="flex items-center justify-center gap-1.5 px-5 py-3 text-sm font-bold text-white rounded bg-[var(--color-accent)]"
                   >
-                    <Icon size={16} className="text-[var(--color-accent)]" />
-                    {link.label}
+                    {content.getStarted} <ChevronRight size={14} />
                   </Link>
-                );
-              })}
-              <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
-                <Link
-                  href={`/${currentLang}/#pricing`}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-1.5 px-5 py-3 text-sm font-bold text-white rounded bg-[var(--color-accent)]"
-                >
-                  {content.getStarted} <ChevronRight size={14} />
-                </Link>
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
     </>
   );
 }

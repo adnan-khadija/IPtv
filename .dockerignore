@@ -8,3 +8,6 @@ yarn-debug.log*
 yarn-error.log*
 Dockerfile
 .dockerignore
+
+# playlist source data (15 MB) — only the generated output in public/playlist is shipped
+/playlist

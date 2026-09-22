@@ -1,8 +1,6 @@
 # 📺 StreamVault — Premium IPTV Service
 
 > A modern, bilingual (EN/FR) IPTV subscription website built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**.
-> 
-> 🌐 Website: [https://tvsuisse.ch/fr/](https://tvsuisse.ch/fr/)
 
 ---
 

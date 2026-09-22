@@ -1,11 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { contentFr } from "@/lib/content/fr";
-import { contentEn } from "@/lib/content/en";
 import { contentDe } from "@/lib/content/de";
-
 import type { SVGProps } from "react";
 
 // WhatsApp Business number (digits only, with country code, no +)
@@ -18,23 +14,19 @@ const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export default function Footer() {
-  const pathname = usePathname() || "";
-  let lang = "fr";
-  if (pathname.startsWith("/en")) lang = "en";
-  if (pathname.startsWith("/de")) lang = "de";
-  const c = lang === "en" ? contentEn : lang === "de" ? contentDe : contentFr;
+  const c = contentDe;
 
   const footerLinks = {
     product: [
-      { label: c.nav.home, href: `/${lang}/` },
-      { label: c.nav.channels, href: `/${lang}/#channels` },
-      { label: c.nav.faq, href: `/${lang}/#faq` },
-      { label: c.nav.contact, href: `/${lang}/contact` },
+      { label: c.nav.home, href: "/" },
+      { label: c.nav.channels, href: "/channels" },
+      { label: c.nav.faq, href: "/#faq" },
+      { label: c.nav.contact, href: "/contact" },
     ],
     legal: [
-      { label: c.footer.terms, href: `/${lang}/terms` },
-      { label: c.footer.privacy, href: `/${lang}/privacy` },
-      { label: c.footer.refund, href: `/${lang}/refund` },
+      { label: c.footer.terms, href: "/terms" },
+      { label: c.footer.privacy, href: "/privacy" },
+      { label: c.footer.refund, href: "/refund" },
     ],
   };
 
@@ -44,7 +36,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href={`/${lang}`} className="flex items-center gap-2 mb-4 group">
+            <Link href="/" className="flex items-center gap-2 mb-4 group">
               <svg className="w-8 h-8 text-[var(--color-accent)] fill-[var(--color-accent)]/10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="2" y="5" width="20" height="14" rx="2.5" stroke="currentColor" strokeWidth="2" />
                 <path d="M17 2H7L12 5L17 2Z" fill="currentColor"/>
@@ -63,7 +55,7 @@ export default function Footer() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Contact us on WhatsApp"
+                aria-label="Kontaktieren Sie uns auf WhatsApp"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/60 transition-all text-sm font-semibold"
               >
                 <WhatsAppIcon className="w-5 h-5" />

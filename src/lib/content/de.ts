@@ -1,7 +1,7 @@
 export const contentDe = {
   nav: {
     home: "Startseite",
-    channels: "Sender & VOD",
+    channels: "Senderliste",
     faq: "FAQ",
     contact: "Kontakt",
     features: "IPTV-Funktionen",
@@ -9,27 +9,27 @@ export const contentDe = {
     devices: "Geräte",
     login: "Kundenbereich",
     getStarted: "Kaufen",
-    promoBanner: "🔥 -30% auf alle IPTV-Abonnements — Befristetes Angebot 🔥",
+    promoBanner: "🔥 -45% auf alle IPTV-Abonnements — Befristetes Angebot 🔥",
   },
   hero: {
-    title: "Das beste IPTV-Abonnement in der Schweiz.",
-    subtitle: "Schließen Sie sich über 50.000 zufriedenen Kunden an. Greifen Sie auf +20.000 Live-TV-Sender und +40.000 Filme & Serien als VOD zu. Hohe Bildqualität, stabile Server, ohne Unterbrechungen.",
-    cta1: "IPTV-Abonnements ansehen",
-    cta2: "24h Kostenloser Test",
+    title: "IPTV Schweiz: Das Beste TV-Abonnement",
+    subtitle: "IPTV Schweiz der neuen Generation: über 30 000 Live-TV-Sender und 90 000 Filme & Serien on demand. Hohe Bildqualität, stabile Server, ohne Unterbrechung. Bereits über 50 000 zufriedene Kunden.",
+    cta1: "🔥 12-Monats-Abo bestellen",
+    cta2: "Kostenloser Test",
     reassurance: "Sofortige Aktivierung • Keine Vertragsbindung • 24/7 Schweizer Support",
   },
   features: {
-    title: "Warum unser IPTV wählen?",
+    title: "Warum unser IPTV Schweiz wählen?",
     subtitle: "Ein hochwertiger IPTV-Service, stabile Server und reaktionsschneller Support für Ihren Komfort.",
     items: [
       { title: "Premium IPTV-Server", description: "Exklusive Anti-Freeze-Technologie. Ultraschnelle Bandbreite garantiert ohne Unterbrechungen, sogar an Champions-League-Abenden." },
       { title: "Hohe Bildqualität", description: "Genießen Sie ein klares und flüssiges Bild auf Ihrem Smart TV. Alle Auflösungen passen sich automatisch Ihrer Verbindung an." },
       { title: "VOD & Serien-Katalog", description: "Netflix, Amazon Prime, Disney+ inklusive. Die neuesten Kinostarts und Serien werden täglich aktualisiert." },
-      { title: "7-Tage Replay & Catch-up", description: "Haben Sie die Nachrichten oder Ihre Sendung verpasst? Sehen Sie sich alle Ihre Lieblingsprogramme bis zu 7 Tage später an." },
+      { title: "Kostenlose Updates", description: "Unsere Dienste und Sender sowie unser Server werden automatisch aktualisiert." },
     ]
   },
   pricing: {
-    title: "Unsere IPTV-Abonnements",
+    title: "Unsere IPTV Schweiz Abonnements",
     subtitle: "Premium IPTV-Pakete, die auf Ihre Bedürfnisse zugeschnitten sind. Einmalige Zahlung, kein automatischer Einzug.",
     deviceLabel: "1 Gerät · 1 Bildschirm",
     durations: {
@@ -46,8 +46,8 @@ export const contentDe = {
     cta: "Mein IPTV bestellen",
     whatsappMessage: "Hallo, ich interessiere mich für das {plan}-Angebot für {price} CHF. Ich möchte abonnieren.",
     featuresList: [
-      "20.000 TV-Sender",
-      "90.000 Filme und Serien",
+      "30 000 TV-Sender",
+      "90 000 Filme und Serien",
       "M3U & MAG Portal & Xtream",
       "100% Sicher",
       "Alle Sender (Sport, Kino, Doku)",
@@ -59,27 +59,27 @@ export const contentDe = {
       "Support über WhatsApp & E-Mail",
     ],
     reassurance: [
-      "7 Tage Geld-zurück-Garantie",
+      "Geld-zurück-Garantie",
       "IPTV-Aktivierung in < 2h",
       "24/7 Technischer Support",
       "100% Sicher und Anonym",
     ],
     prices: {
-      "1": { normal: 18, promo: 14 },
-      "3": { normal: 45, promo: 35 },
-      "6": { normal: 75, promo: 55 },
-      "12": { normal: 130, promo: 79 }
+      "1": { normal: 21.99, promo: 11.99 },
+      "3": { normal: 35.99, promo: 19.99 },
+      "6": { normal: 55.99, promo: 30.99 },
+      "12": { normal: 83.99, promo: 45.99 }
     }
   },
   devices: {
-    title: "Ihr IPTV auf all Ihren Geräten",
+    title: "Ihr IPTV Schweiz auf allen Geräten",
     subtitle: "Installieren Sie Ihr Abonnement ganz einfach auf Smart TV (Samsung, LG), Android TV-Box, Apple TV, Smartphone, Tablet oder PC über unsere empfohlenen Anwendungen (Smarters Pro, IBO Player...).",
     smartTv: "Smart TV",
     computer: "Computer",
     mobile: "Mobil & Tablet",
   },
   faq: {
-    title: "Fragen zu IPTV",
+    title: "Häufige Fragen zu IPTV Schweiz",
     subtitle: "Alles, was Sie wissen müssen, bevor Sie Ihr Abonnement bestellen.",
     questions: [
       {
@@ -87,12 +87,8 @@ export const contentDe = {
         a: "Es ist ganz einfach! Sobald Sie bestellt haben, erhalten Sie eine Anleitung per E-Mail, in der erklärt wird, wie Sie eine App (wie IPTV Smarters Pro, IBO Player oder Set IPTV) auf Ihren Smart TV herunterladen und Ihre Anmeldedaten eingeben."
       },
       {
-        q: "Gibt es Unterbrechungen während der Spiele?",
-        a: "Nein. Wir verwenden unsere eigenen Premium-Server in der Schweiz und den Niederlanden mit Load-Balancing-Technologie. Wir garantieren einen 99,9% stabilen IPTV-Stream, auch bei Events mit hohen Zuschauerzahlen."
-      },
-      {
         q: "Kann ich mein Abonnement auf mehreren Bildschirmen nutzen?",
-        a: "Ja, aber das hängt von dem von Ihnen gewählten Paket ab (1, 2, 3 oder 4 Bildschirme). Wenn Sie ein Abonnement für 1 Bildschirm abschließen, können Sie es jeweils nur auf einem Gerät nutzen. Wenn Sie versuchen, sich auf einem zweiten Bildschirm gleichzeitig anzumelden, könnte Ihr Konto gesperrt werden."
+        a: "Sie können Ihr Konto auf mehreren Geräten einrichten (Smart TV, Smartphone, Tablet, PC), aber Sie können jeweils nur einen Stream gleichzeitig schauen. Für zwei Bildschirme gleichzeitig benötigen Sie ein zusätzliches Abonnement."
       },
       {
         q: "Wie hoch ist die erforderliche Mindest-Internetgeschwindigkeit?",
@@ -102,6 +98,15 @@ export const contentDe = {
         q: "Haben Sie Sportpakete und Schweizer Sender?",
         a: "Absolut. Das IPTV-Abonnement umfasst alle Schweizer Sender (SRF, RTS, RSI, Blue Sports, MySports) sowie vollständige französische und internationale Sportpakete und PPV (Canal+, RMC, BeIN usw.)."
       }
+,
+      {
+        q: "Wie kann ich mein Abonnement bezahlen?",
+        a: "Wir akzeptieren PayPal sowie Kreditkarten (Visa, Mastercard). Eine einmalige Zahlung, ohne automatische Verlängerung und ohne Vertragsbindung."
+      },
+      {
+        q: "Bieten Sie internationale Sender an?",
+        a: "Ja, wir haben Sender aus aller Welt. Neben den Schweizer Sendern (RTS, SRF, RSI, blue Sport, MySports) enthält Ihr Abo Frankreich, Deutschland, Italien, Grossbritannien, die USA, arabische Länder, Afrika, Asien und viele mehr, inklusive aller grossen Sport- und Kinopakete."
+      }
     ]
   },
   sliders: {
@@ -110,13 +115,8 @@ export const contentDe = {
     live: "LIVE",
     moviesTitle: "Aktuelle Filme & Serien (VOD)",
     moviesSubtitle: "Genießen Sie die neuesten Veröffentlichungen auf Netflix, Disney+, Prime Video & HBO in Ultra HD.",
-    tvTitle: "Live-TV-Sender nach Land",
-    tvSubtitle: "Wählen Sie ein Zielland aus, um unseren stabilen Sender-Stream zu erkunden:",
-    countries: {
-      ch: "🇨🇭 Schweiz",
-      fr: "🇫🇷 Frankreich",
-      ukUs: "🇬🇧/🇺🇸 UK & USA",
-    }
+    tvTitle: "Live-Sender & Plattformen",
+    tvSubtitle: "Schweizer Sender und internationale Plattformen in Ihrem Abo:"
   },
   whatsappReviews: {
     title: "WhatsApp-Kundenbewertungen",
@@ -172,6 +172,23 @@ export const contentDe = {
       }
     ]
   },
+  whatsappFab: {
+    label: "Brauchen Sie Hilfe?",
+    aria: "Kontaktieren Sie uns auf WhatsApp",
+    message: "Hallo, ich habe eine Frage zu Ihren IPTV-Angeboten.",
+  },
+  channelsPage: {
+    title: "Senderliste",
+    subtitle: "Durchsuchen Sie alle in Ihrem Abo enthaltenen Sender, Land für Land. Klicken Sie auf ein Land, um seine Sender zu entdecken.",
+    channels: "Sender",
+    categories: "Kategorien",
+    searchPlaceholder: "Sender suchen...",
+    back: "Alle Länder",
+    loading: "Sender werden geladen...",
+    error: "Die Sender konnten nicht geladen werden. Bitte später erneut versuchen.",
+    noResults: "Kein Sender entspricht Ihrer Suche.",
+    resultsCapped: "Es werden nur die ersten 300 Treffer angezeigt. Bitte Suche verfeinern.",
+  },
   footer: {
     description: "StreamVault bietet Premium-IPTV-Abonnements in der Schweiz an. Hohe Bildqualität, stabile Server und ein riesiger VOD-Katalog.",
     quickLinks: "Schnellzugriff",
@@ -179,6 +196,6 @@ export const contentDe = {
     rights: "Alle Rechte vorbehalten. Premium IPTV Service.",
     terms: "Allgemeine Geschäftsbedingungen",
     privacy: "Datenschutzerklärung",
-    refund: "Rückerstattungsrichtlinie (7 Tage)",
+    refund: "Rückerstattungsrichtlinie",
   }
 };

@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Play, Shield, Star, Zap } from "lucide-react";
+import { Shield, Star, Zap } from "lucide-react";
+import { waLink } from "@/lib/whatsapp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -21,9 +22,15 @@ interface HeroProps {
     cta2: string;
     reassurance: string;
   };
+  /** Pricing content — used to build the 12-month WhatsApp order link. */
+  pricing?: {
+    durations: Record<number | string, string>;
+    prices: Record<string, { normal: number; promo: number }>;
+    whatsappMessage?: string;
+  };
 }
 
-export default function Hero({ content }: HeroProps) {
+export default function Hero({ content, pricing }: HeroProps) {
   const c = content || {
     title: "Le cinéma chez vous, sans compromis.",
     subtitle: "Accédez à plus de 20 000 chaînes en direct et 40 000+ films & séries en VOD. Haute qualité d'image, sans coupure, sans engagement.",
@@ -34,12 +41,37 @@ export default function Hero({ content }: HeroProps) {
 
   const reassurances = c.reassurance.split('•').map((s: string) => s.trim());
 
+  // Primary CTA orders the 12-month plan over WhatsApp, matching the pricing cards.
+  const annual = pricing?.prices?.["12"];
+  const orderAnnualHref = annual
+    ? waLink(
+        (pricing?.whatsappMessage ?? "Bonjour, je suis intéressé(e) par l'offre {plan} à {price} CHF. Je souhaite souscrire.")
+          .replace("{plan}", String(pricing?.durations?.[12] ?? "12"))
+          .replace("{price}", String(annual.promo))
+      )
+    : null;
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#050505]">
-      {/* Cinematic Backdrop Image/Gradient */}
-      <div 
-        className="absolute inset-0 z-0 opacity-40 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=2070&auto=format&fit=crop')" }}
+      {/* Cinematic backdrop video. Decorative only — muted, looping, no controls. */}
+      <video
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-40 motion-reduce:hidden"
+        src="/hero.mp4"
+        poster="/hero-poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+
+      {/* Still frame for reduced-motion users (and while the video buffers) */}
+      <div
+        className="absolute inset-0 z-0 hidden bg-cover bg-center opacity-40 motion-reduce:block"
+        style={{ backgroundImage: "url('/hero-poster.jpg')" }}
+        aria-hidden="true"
       />
       
       {/* Dark gradient fade at bottom */}
@@ -81,13 +113,23 @@ export default function Hero({ content }: HeroProps) {
           animate="visible"
           className="flex flex-col sm:flex-row items-start gap-4 mb-10"
         >
-          <Link
-            href="#pricing"
-            className="group flex items-center gap-2 px-8 py-4 text-lg font-bold text-white rounded bg-[var(--color-accent)] hover:bg-[#b20710] shadow-lg glow-red-hover transition-all duration-300"
-          >
-            <Play size={20} className="fill-white" />
-            {c.cta1}
-          </Link>
+          {orderAnnualHref ? (
+            <a
+              href={orderAnnualHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 px-8 py-4 text-lg font-bold text-white rounded bg-[var(--color-accent)] hover:bg-[#b20710] shadow-lg glow-red-hover transition-all duration-300"
+            >
+              {c.cta1}
+            </a>
+          ) : (
+            <Link
+              href="#pricing"
+              className="group flex items-center gap-2 px-8 py-4 text-lg font-bold text-white rounded bg-[var(--color-accent)] hover:bg-[#b20710] shadow-lg glow-red-hover transition-all duration-300"
+            >
+              {c.cta1}
+            </Link>
+          )}
           <Link 
             href="#features"
             className="flex items-center gap-2 px-8 py-4 text-lg font-bold text-white rounded bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all duration-300"

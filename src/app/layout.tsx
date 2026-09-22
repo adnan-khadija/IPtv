@@ -3,59 +3,52 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
 
 const BASE_URL = "https://tvsuisse.ch";
 
 export const metadata: Metadata = {
   title: {
-    default: "TV Suisse",
-    template: "%s | TV Suisse",
+    default: "IPTV Schweiz | Premium IPTV-Abo ab 11.99 CHF",
+    template: "%s | TV Schweiz",
   },
   description:
-    "TV Suisse : accédez à 20 000+ chaînes IPTV en direct, 40 000+ films & séries VOD. Qualité HD/4K, sans coupure, activation instantanée. Abonnement dès 15 CHF/mois.",
+    "IPTV Schweiz Premium: 30 000+ Live-TV-Sender und 90 000+ Filme & Serien. HD/4K ohne Unterbrechung, sofortige Aktivierung. Ab 11.99 CHF/Monat.",
   keywords: [
-    "IPTV", "abonnement IPTV", "IPTV France", "IPTV Suisse", "IPTV Maroc",
-    "meilleur IPTV", "IPTV pas cher", "chaînes TV en direct", "VOD streaming",
-    "IPTV premium", "IPTV HD", "IPTV 4K", "smart IPTV", "IPTV subscription",
-    "best IPTV service", "live TV streaming", "IPTV Belgium", "IPTV Canada",
-    "TV Suisse", "IPTV activation rapide", "IPTV sans engagement",
+    "IPTV", "IPTV Schweiz", "IPTV Abo Schweiz", "bestes IPTV Schweiz",
+    "IPTV Schweiz günstig", "IPTV Schweiz 4K", "IPTV Abonnement",
+    "Schweizer Sender IPTV", "IPTV Zürich", "IPTV Bern", "IPTV Basel",
+    "IPTV ohne Unterbrechung", "TV Schweiz", "Smart IPTV Schweiz",
   ],
-  authors: [{ name: "TV Suisse", url: BASE_URL }],
-  creator: "TV Suisse",
-  publisher: "TV Suisse",
+  authors: [{ name: "TV Schweiz", url: BASE_URL }],
+  creator: "TV Schweiz",
+  publisher: "TV Schweiz",
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: "./",
-    languages: {
-      "fr": "/fr",
-      "de": "/de",
-      "en": "/en",
-      "x-default": "/fr",
-    },
   },
   openGraph: {
     type: "website",
-    locale: "fr_FR",
-    alternateLocale: ["de_DE", "en_US"],
+    locale: "de_CH",
     url: BASE_URL,
-    siteName: "TV Suisse IPTV",
-    title: "TV Suisse — IPTV Premium | 20 000+ Chaînes HD",
+    siteName: "TV Schweiz IPTV",
+    title: "IPTV Schweiz — Premium IPTV-Abonnement | 30 000+ Sender HD",
     description:
-      "20 000+ chaînes IPTV, 40 000+ films VOD. HD/4K sans coupure. Abonnement dès 15 CHF/mois. Activation instantanée via WhatsApp.",
+      "30 000+ Live-TV-Sender, 90 000+ Filme & Serien. HD/4K ohne Unterbrechung. Ab 11.99 CHF/Monat. Sofortige Aktivierung via WhatsApp.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "TV Suisse — Service IPTV Premium",
+        alt: "TV Schweiz — Premium IPTV Dienst",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TV Suisse — IPTV Premium | 20 000+ Chaînes",
-    description: "20 000+ chaînes IPTV en direct, 40 000+ VOD. HD/4K sans coupure. Dès 15 CHF/mois.",
+    title: "IPTV Schweiz — Premium IPTV-Abonnement",
+    description: "30 000+ Live-TV-Sender, 90 000+ VOD. HD/4K ohne Unterbrechung. Ab 11.99 CHF/Monat.",
     images: ["/og-image.png"],
     creator: "@TVSuisseIPTV",
   },
@@ -92,7 +85,7 @@ const globalSchema = {
     {
       "@type": "Organization",
       "@id": `${BASE_URL}/#organization`,
-      name: "TV Suisse",
+      name: "TV Schweiz",
       url: BASE_URL,
       logo: {
         "@type": "ImageObject",
@@ -103,7 +96,7 @@ const globalSchema = {
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
-        availableLanguage: ["French", "German", "English", "Arabic"],
+        availableLanguage: ["German"],
         contactOption: "TollFree",
       },
       sameAs: [],
@@ -112,13 +105,13 @@ const globalSchema = {
       "@type": "WebSite",
       "@id": `${BASE_URL}/#website`,
       url: BASE_URL,
-      name: "TV Suisse IPTV",
-      description: "Service IPTV premium avec 20 000+ chaînes et 40 000+ VOD",
+      name: "TV Schweiz IPTV",
+      description: "Premium IPTV Dienst mit über 30 000 Sendern und 90 000+ VOD",
       publisher: { "@id": `${BASE_URL}/#organization` },
-      inLanguage: ["fr-FR", "de-DE", "en-US"],
+      inLanguage: ["de-DE", "de-CH"],
       potentialAction: {
         "@type": "SearchAction",
-        target: { "@type": "EntryPoint", urlTemplate: `${BASE_URL}/fr/#channels?q={search_term_string}` },
+        target: { "@type": "EntryPoint", urlTemplate: `${BASE_URL}/channels?q={search_term_string}` },
         "query-input": "required name=search_term_string",
       },
     },
@@ -131,7 +124,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="de" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -143,6 +136,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <WhatsAppButton />
         </ThemeProvider>
       </body>
     </html>

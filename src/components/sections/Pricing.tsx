@@ -1,11 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import { Check, Shield, Zap, Monitor, Clock } from "lucide-react";
-
-// WhatsApp Business number (digits only, with country code, no +)
-const WHATSAPP_NUMBER = "212699105831";
+import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
 interface PricingProps {
   content?: {
@@ -26,12 +23,6 @@ interface PricingProps {
 }
 
 export default function Pricing({ content }: PricingProps) {
-  const pathname = usePathname() || "";
-  const isEn = pathname.startsWith("/en");
-  const isDe = pathname.startsWith("/de");
-  const lang = isEn ? "en" : isDe ? "de" : "fr";
-  void lang;
-
   if (!content) return null;
 
   const c = content;
@@ -61,7 +52,8 @@ export default function Pricing({ content }: PricingProps) {
           {durations.map((months, i) => {
             const data = c.prices[String(months)];
             const isBestSeller = months === 12;
-            const savings = data.normal - data.promo;
+            // Round to cents: float subtraction of decimal prices yields e.g. 4.999999999999998
+            const savings = Math.round((data.normal - data.promo) * 100) / 100;
             const perMonth = (data.promo / months).toFixed(2);
 
             return (

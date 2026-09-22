@@ -9,27 +9,27 @@ export const contentEn = {
     devices: "Devices",
     login: "Client Portal",
     getStarted: "Buy Now",
-    promoBanner: "🔥 30% OFF all IPTV Subscriptions — Limited Time Offer 🔥",
+    promoBanner: "🔥 45% OFF all IPTV Subscriptions — Limited Time Offer 🔥",
   },
   hero: {
-    title: "The Best Premium IPTV Service.",
-    subtitle: "Join over 50,000 satisfied customers. Access 20,000+ live TV channels and 40,000+ VOD movies & series. High quality picture, stable servers, zero buffering.",
-    cta1: "View IPTV Plans",
-    cta2: "Free 24H Trial",
+    title: "IPTV Switzerland: The Best TV Subscription",
+    subtitle: "IPTV Switzerland done right: over 30,000 live TV channels and 90,000 movies & series on demand. High picture quality, stable servers, zero buffering. Already trusted by 50,000+ customers.",
+    cta1: "🔥 Get the 12-Month Plan",
+    cta2: "Free Trial",
     reassurance: "Instant Activation • No Contract • 24/7 Premium Support",
   },
   features: {
-    title: "Why Choose Our IPTV?",
+    title: "Why Choose Our IPTV Switzerland?",
     subtitle: "A high quality IPTV service with stable servers and responsive support for your comfort.",
     items: [
       { title: "Premium IPTV Servers", description: "Exclusive Anti-Freeze technology. Ultra-fast bandwidth guaranteed without buffering, even during big sports matches." },
       { title: "High Quality Picture", description: "Enjoy a sharp and smooth image on your Smart TV. All resolutions automatically adapt to your connection." },
       { title: "Giant VOD Library", description: "Netflix, Amazon Prime, Disney+ content included. The latest cinema releases and trending series updated daily." },
-      { title: "7-Day Replay & Catch-up", description: "Missed the news or your favorite show? Watch all your favorite programs up to 7 days back." },
+      { title: "Free Updates", description: "Our services and channels, as well as our server, are updated automatically." },
     ]
   },
   pricing: {
-    title: "Our IPTV Plans",
+    title: "Our IPTV Switzerland Plans",
     subtitle: "Premium IPTV packages tailored to your needs. One-time payment, no automatic renewals.",
     deviceLabel: "1 Device · 1 Screen",
     durations: {
@@ -44,9 +44,9 @@ export const contentEn = {
       perMonth: "only {price} CHF/mo",
     },
     cta: "Order IPTV Now",
-    whatsappMessage: "Hello, I am interested in the {plan} plan at {price} CHF. I would like to subscribe.",
+    whatsappMessage: "Hello, I am interested in the {plan} at {price} CHF. I would like to subscribe.",
     featuresList: [
-      "20,000 TV Channels",
+      "30,000 TV Channels",
       "90,000 Movies and Series",
       "M3U & MAG Portal & Xtream",
       "100% Secure",
@@ -59,27 +59,27 @@ export const contentEn = {
       "WhatsApp & Email Support",
     ],
     reassurance: [
-      "7-Day money-back guarantee",
+      "Money-back guarantee",
       "IPTV Activation in < 2h",
       "24/7 Technical Support",
       "100% Secure and Anonymous",
     ],
     prices: {
-      "1": { normal: 18, promo: 14 },
-      "3": { normal: 45, promo: 35 },
-      "6": { normal: 75, promo: 55 },
-      "12": { normal: 130, promo: 79 }
+      "1": { normal: 21.99, promo: 11.99 },
+      "3": { normal: 35.99, promo: 19.99 },
+      "6": { normal: 55.99, promo: 30.99 },
+      "12": { normal: 83.99, promo: 45.99 }
     }
   },
   devices: {
-    title: "Your IPTV on all your devices",
+    title: "Your IPTV Switzerland on All Your Devices",
     subtitle: "Easily install your subscription on Smart TV (Samsung, LG), Android Box, Apple TV, Smartphone, Tablet or PC via our recommended apps (Smarters Pro, IBO Player...).",
     smartTv: "Smart TV",
     computer: "Computer",
     mobile: "Mobile & Tablet",
   },
   faq: {
-    title: "IPTV Questions",
+    title: "IPTV Switzerland — Frequently Asked Questions",
     subtitle: "Everything you need to know before ordering your subscription.",
     questions: [
       {
@@ -87,12 +87,8 @@ export const contentEn = {
         a: "It's very simple! Once your order is placed, you will receive an email tutorial explaining how to download an app (like IPTV Smarters Pro, IBO Player, or Set IPTV) on your Smart TV, and how to enter your credentials."
       },
       {
-        q: "Is there buffering during big matches?",
-        a: "No. We use our own premium servers located in Europe with load balancing technology. We guarantee a stable 99.9% IPTV stream, even during high-audience events."
-      },
-      {
         q: "Can I use my subscription on multiple screens?",
-        a: "Yes, but it depends on the plan you choose (1, 2, 3 or 4 screens). If you buy a 1-screen plan, you can only use it on one device at a time. If you try to connect a second screen simultaneously, your account may be temporarily blocked."
+        a: "You can set your account up on several devices (Smart TV, smartphone, tablet, PC), but you can only watch one stream at a time. To watch on two screens simultaneously you need an additional subscription."
       },
       {
         q: "What is the minimum internet speed required?",
@@ -102,6 +98,15 @@ export const contentEn = {
         q: "Do you have all the sports channels?",
         a: "Absolutely. The IPTV subscription includes all major sports channels (Sky, BT Sport, ESPN, BeIN, etc.) as well as Pay-Per-View events."
       }
+,
+      {
+        q: "How can I pay for my subscription?",
+        a: "We accept PayPal as well as bank cards (Visa, Mastercard). A single one-off payment, with no automatic renewal and no commitment."
+      },
+      {
+        q: "Do you offer international channels?",
+        a: "Yes, we have channels from all over the world. Alongside the Swiss channels (RTS, SRF, RSI, blue Sport, MySports), your subscription includes France, Germany, Italy, the UK, the USA, Arabic countries, Africa, Asia and many more, with all the major sports and cinema packages."
+      }
     ]
   },
   sliders: {
@@ -110,13 +115,8 @@ export const contentEn = {
     live: "LIVE",
     moviesTitle: "Recent Movies & Series (VOD)",
     moviesSubtitle: "Enjoy the latest releases from Netflix, Disney+, Prime Video & HBO in Ultra HD.",
-    tvTitle: "Live TV Channels by Target Country",
-    tvSubtitle: "Select a target country to explore our stable channels feed:",
-    countries: {
-      ch: "🇨🇭 Switzerland",
-      fr: "🇫🇷 France",
-      ukUs: "🇬🇧/🇺🇸 UK & USA",
-    }
+    tvTitle: "Live TV Channels & Platforms",
+    tvSubtitle: "Swiss channels and international platforms included in your subscription:"
   },
   whatsappReviews: {
     title: "WhatsApp Customer Reviews",
@@ -172,6 +172,23 @@ export const contentEn = {
       }
     ]
   },
+  whatsappFab: {
+    label: "Need help?",
+    aria: "Contact us on WhatsApp",
+    message: "Hello, I have a question about your IPTV plans.",
+  },
+  channelsPage: {
+    title: "Channels List",
+    subtitle: "Browse every channel included in your subscription, country by country. Click a country to discover its channels.",
+    channels: "channels",
+    categories: "categories",
+    searchPlaceholder: "Search for a channel...",
+    back: "All countries",
+    loading: "Loading channels...",
+    error: "Could not load the channels. Please try again later.",
+    noResults: "No channel matches your search.",
+    resultsCapped: "Only the first 300 results are shown. Refine your search.",
+  },
   footer: {
     description: "StreamVault provides premium IPTV subscriptions with high quality picture, stable servers, and a massive VOD catalog.",
     quickLinks: "Quick Access",
@@ -179,6 +196,6 @@ export const contentEn = {
     rights: "All rights reserved. Premium IPTV Service.",
     terms: "Terms of Service",
     privacy: "Privacy Policy",
-    refund: "Refund Policy (7 Days)",
+    refund: "Refund Policy",
   }
 };

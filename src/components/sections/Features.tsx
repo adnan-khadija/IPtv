@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import {
-  Tv2, Radio, Film, Smartphone,
+  Tv2, Radio, Film, RefreshCw,
 } from "lucide-react";
 
-const defaultIcons = [Tv2, Radio, Film, Smartphone];
+const defaultIcons = [Tv2, Radio, Film, RefreshCw];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Play, Tv, Film, Star } from "lucide-react";
 
 interface ChannelItem {
@@ -9,53 +8,48 @@ interface ChannelItem {
   logoText: string;
   logoBg: string;
   logoFg: string;
-  badge: string;
   genre: string;
+  /** Optional real logo file, e.g. "/channels/srf1.svg". Falls back to the wordmark tile. */
+  logoSrc?: string;
 }
 
 interface VodItem {
   title: string;
   image: string;
-  rating: string;
+  /** Omitted when no public score exists yet (e.g. a brand-new release). */
+  rating?: string;
   genre: string;
   year: string;
   platform: string;
 }
 
-const CHANNELS_DATA: Record<string, ChannelItem[]> = {
-  ch: [
-    { name: "RTS Un HD", logoText: "RTS 1", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
-    { name: "RTS Deux HD", logoText: "RTS 2", logoBg: "bg-red-700", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
-    { name: "SRF 1 HD", logoText: "SRF 1", logoBg: "bg-red-800", logoFg: "text-white", badge: "FHD", genre: "News & Doc" },
-    { name: "SRF zwei HD", logoText: "SRF 2", logoBg: "bg-zinc-800", logoFg: "text-red-500", badge: "FHD", genre: "Sport & Divertissement" },
-    { name: "RSI LA 1 HD", logoText: "RSI 1", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
-    { name: "Blue Zoom HD", logoText: "blue", logoBg: "bg-blue-600", logoFg: "text-white", badge: "FHD", genre: "Sports" },
-    { name: "Blue Sports 1 HD", logoText: "blue SPORT", logoBg: "bg-blue-800", logoFg: "text-white", badge: "FHD", genre: "Live Sports" },
-    { name: "MySports HD", logoText: "MySports", logoBg: "bg-teal-600", logoFg: "text-black", badge: "FHD", genre: "Ice Hockey & Sports" },
-  ],
-  fr: [
-    { name: "TF1 HD", logoText: "TF1", logoBg: "bg-blue-600", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
-    { name: "France 2 HD", logoText: "2", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "Généraliste" },
-    { name: "M6 HD", logoText: "M6", logoBg: "bg-orange-500", logoFg: "text-white", badge: "FHD", genre: "Divertissement" },
-    { name: "Canal+ HD", logoText: "CANAL+", logoBg: "bg-black border border-white/20", logoFg: "text-white", badge: "FHD", genre: "Premium Cinema & Sport" },
-    { name: "RMC Sport 1 HD", logoText: "RMC SPORT", logoBg: "bg-purple-900", logoFg: "text-yellow-400", badge: "FHD", genre: "Ligue des Champions" },
-    { name: "beIN Sports 1 HD", logoText: "beIN", logoBg: "bg-purple-600", logoFg: "text-white", badge: "FHD", genre: "Football & Sports" },
-    { name: "Eurosport 1 HD", logoText: "EUROSPORT", logoBg: "bg-blue-900", logoFg: "text-white", badge: "FHD", genre: "Multi-Sports" },
-    { name: "Canal+ Foot HD", logoText: "C+ FOOT", logoBg: "bg-zinc-900", logoFg: "text-emerald-400", badge: "FHD", genre: "Sports" }
-  ],
-  ukUs: [
-    { name: "BBC One HD", logoText: "BBC 1", logoBg: "bg-red-700", logoFg: "text-white", badge: "FHD", genre: "General" },
-    { name: "ITV 1 HD", logoText: "itv 1", logoBg: "bg-blue-500", logoFg: "text-white", badge: "FHD", genre: "General" },
-    { name: "Sky Sports Main Event", logoText: "sky sports", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "Premier League" },
-    { name: "TNT Sports 1 HD", logoText: "TNT SPORTS", logoBg: "bg-pink-700", logoFg: "text-white", badge: "FHD", genre: "Live Sports" },
-    { name: "Sky Cinema Premiere", logoText: "sky cinema", logoBg: "bg-yellow-500", logoFg: "text-black", badge: "FHD", genre: "Latest Blockbusters" },
-    { name: "HBO HD", logoText: "HBO", logoBg: "bg-black border border-white/10", logoFg: "text-white", badge: "FHD", genre: "Original Series" },
-    { name: "ESPN HD", logoText: "ESPN", logoBg: "bg-red-600", logoFg: "text-white", badge: "FHD", genre: "US Sports" },
-    { name: "NBC HD", logoText: "NBC", logoBg: "bg-purple-800", logoFg: "text-white", badge: "FHD", genre: "News & Shows" }
-  ]
-};
+// Swiss line-up ordered by national audience share (SRG SSR / Statista) interleaved with
+// the international streaming platforms subscribers ask for, shown in one continuous slider.
+const CHANNELS: ChannelItem[] = [
+  { name: "SRF 1 HD", logoText: "SRF 1", logoBg: "bg-[#141414] border border-white/20", logoFg: "text-white", genre: "Généraliste · N°1 Suisse alémanique" },
+  { name: "Netflix", logoText: "NETFLIX", logoBg: "bg-black border border-white/15", logoFg: "text-[#e50914]", genre: "Séries & Films originaux" },
+  { name: "RTS 1 HD", logoText: "RTS 1", logoBg: "bg-[#e2001a]", logoFg: "text-white", genre: "Généraliste · N°1 Romandie" },
+  { name: "Apple TV+", logoText: "Apple TV+", logoBg: "bg-[#0d0d0d] border border-white/20", logoFg: "text-white", genre: "Originals & Cinéma" },
+  { name: "SRF zwei HD", logoText: "SRF 2", logoBg: "bg-[#2b2b2b] border border-white/15", logoFg: "text-white", genre: "Sport & Séries" },
+  { name: "Disney+", logoText: "Disney+", logoBg: "bg-[#0c1a4d]", logoFg: "text-white", genre: "Disney · Marvel · Star Wars" },
+  { name: "RTS 2 HD", logoText: "RTS 2", logoBg: "bg-[#a4000f]", logoFg: "text-white", genre: "Sport & Jeunesse" },
+  { name: "Prime Video", logoText: "prime", logoBg: "bg-[#00a8e1]", logoFg: "text-white", genre: "Films, Séries & Sport" },
+  { name: "RSI LA 1 HD", logoText: "RSI 1", logoBg: "bg-[#d81f26]", logoFg: "text-white", genre: "Généraliste · Suisse italienne" },
+  { name: "HBO Max", logoText: "HBO MAX", logoBg: "bg-[#0a0a2a] border border-white/15", logoFg: "text-white", genre: "Séries premium HBO" },
+  { name: "SRF info HD", logoText: "SRF info", logoBg: "bg-[#1f1f1f] border border-white/15", logoFg: "text-white", genre: "News & Documentaires" },
+  { name: "Paramount+", logoText: "P+", logoBg: "bg-[#0064ff]", logoFg: "text-white", genre: "Films & Séries" },
+  { name: "blue Sport 1 HD", logoText: "blue SPORT", logoBg: "bg-[#0b1f6b]", logoFg: "text-white", genre: "Champions League & Super League" },
+  { name: "Canal+", logoText: "CANAL+", logoBg: "bg-black border border-white/25", logoFg: "text-white", genre: "Cinéma & Sport premium" },
+  { name: "MySports One HD", logoText: "MySports", logoBg: "bg-[#00b3a4]", logoFg: "text-black", genre: "National League & NHL" },
+  { name: "beIN Sports", logoText: "beIN", logoBg: "bg-[#5b2a86]", logoFg: "text-white", genre: "Football international" },
+  { name: "TF1 Suisse HD", logoText: "TF1", logoBg: "bg-[#12235e]", logoFg: "text-white", genre: "Généraliste" },
+  { name: "DAZN", logoText: "DAZN", logoBg: "bg-[#0f0f0f] border border-white/25", logoFg: "text-white", genre: "Sport en direct" },
+  { name: "M6 Suisse HD", logoText: "M6", logoBg: "bg-[#e0004d]", logoFg: "text-white", genre: "Divertissement" },
+  { name: "Sky Sport", logoText: "sky sport", logoBg: "bg-[#0072c9]", logoFg: "text-white", genre: "Premier League & F1" },
+];
 
 const VOD_DATA: VodItem[] = [
+  { title: "The Odyssey", image: "/films/theOdyssey.jpg", genre: "Action, Adventure", year: "2026", platform: "Universal" },
   { title: "Dune: Part Two", image: "/films/dunepart2.png", rating: "4.9", genre: "Action, Sci-Fi", year: "2024", platform: "Cinema" },
   { title: "Interstellar", image: "/films/interstellar.png", rating: "4.9", genre: "Sci-Fi, Adventure", year: "2014", platform: "Paramount" },
   { title: "House of the Dragon", image: "/films/hoseOfDragon.png", rating: "4.8", genre: "Drama, Fantasy", year: "2024", platform: "HBO Max" },
@@ -76,23 +70,15 @@ interface ChannelsAndVODProps {
     moviesSubtitle: string;
     tvTitle: string;
     tvSubtitle: string;
-    countries: {
-      ch: string;
-      fr: string;
-      ukUs: string;
-    };
   };
 }
 
 export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
-  const [activeTab, setActiveTab] = useState<"ch" | "fr" | "ukUs">("ch");
-
   if (!content) return null;
   const c = content;
 
   // Duplicate items for seamless marquee scroll effect
-  const activeChannels = CHANNELS_DATA[activeTab];
-  const doubledChannels = [...activeChannels, ...activeChannels, ...activeChannels, ...activeChannels];
+  const doubledChannels = [...CHANNELS, ...CHANNELS, ...CHANNELS, ...CHANNELS];
   const doubledVod = [...VOD_DATA, ...VOD_DATA, ...VOD_DATA, ...VOD_DATA];
 
   return (
@@ -144,49 +130,47 @@ export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
                 <p className="text-sm text-gray-400 mt-0.5">{c.tvSubtitle}</p>
               </div>
             </div>
-
-
           </div>
         </div>
 
-        {/* Tab Content with Slider */}
+        {/* Single combined slider: Swiss channels + international platforms */}
         <div className="w-full relative select-none overflow-hidden py-4">
           {/* Shadow gradients for fade effects */}
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="flex w-[200%] animate-scroll-left hover:[animation-play-state:paused] gap-4"
-            >
+          <div className="flex w-max animate-scroll-left hover:[animation-play-state:paused] gap-4">
               {doubledChannels.map((chan, idx) => (
                 <div
                   key={`${chan.name}-${idx}`}
                   className="w-[280px] shrink-0 bg-[#141414] border border-white/5 hover:border-[var(--color-accent)]/30 hover:bg-[#1c1c1c] transition-all duration-300 rounded-xl p-4 flex items-center gap-4 cursor-pointer group"
                 >
                   {/* Channel logo box */}
-                  <div className={`w-14 h-14 rounded-lg flex items-center justify-center ${chan.logoBg} font-title text-lg font-black tracking-tighter ${chan.logoFg} shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300`}>
-                    {chan.logoText}
+                  <div className={`w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden ${chan.logoBg} font-title text-center text-[13px] leading-tight font-black tracking-tighter ${chan.logoFg} shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300`}>
+                    {chan.logoSrc ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={chan.logoSrc}
+                        alt={`${chan.name} logo`}
+                        className="w-full h-full object-contain p-1.5"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="px-1">{chan.logoText}</span>
+                    )}
                   </div>
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5 mb-1">
                       <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
                       <span className="text-xs font-bold text-green-500 uppercase tracking-widest">{c.live}</span>
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-gray-300 font-semibold uppercase ml-auto">{chan.badge}</span>
                     </div>
                     <h4 className="text-sm font-bold text-white truncate group-hover:text-[var(--color-accent)] transition-colors duration-300">{chan.name}</h4>
                     <p className="text-[11px] text-gray-400 truncate mt-0.5">{chan.genre}</p>
                   </div>
                 </div>
               ))}
-            </motion.div>
-          </AnimatePresence>
+          </div>
         </div>
       </div>
 
@@ -210,7 +194,7 @@ export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
 
-          <div className="flex w-[200%] animate-scroll-right hover:[animation-play-state:paused] gap-5">
+          <div className="flex w-max animate-scroll-right hover:[animation-play-state:paused] gap-5">
             {doubledVod.map((movie, idx) => (
               <div
                 key={`${movie.title}-${idx}`}
@@ -246,9 +230,13 @@ export default function ChannelsAndVOD({ content }: ChannelsAndVODProps) {
 
                 {/* Details */}
                 <div className="p-3">
-                  <div className="flex items-center gap-1 mb-1">
-                    <Star size={11} className="fill-yellow-500 text-yellow-500" />
-                    <span className="text-xs font-bold text-yellow-400">{movie.rating}</span>
+                  <div className="flex items-center gap-1 mb-1 min-h-[16px]">
+                    {movie.rating && (
+                      <>
+                        <Star size={11} className="fill-yellow-500 text-yellow-500" />
+                        <span className="text-xs font-bold text-yellow-400">{movie.rating}</span>
+                      </>
+                    )}
                     <span className="text-[10px] text-gray-500 ml-auto">{movie.year}</span>
                   </div>
                   <h4 className="text-xs sm:text-sm font-bold text-white truncate group-hover:text-[var(--color-accent)] transition-colors duration-300">{movie.title}</h4>
