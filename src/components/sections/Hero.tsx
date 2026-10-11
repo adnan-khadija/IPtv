@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Shield, Star, Zap } from "lucide-react";
 import { waLink } from "@/lib/whatsapp";
+import { useEffect, useRef } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -51,25 +52,55 @@ export default function Hero({ content, pricing }: HeroProps) {
       )
     : null;
 
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#050505]">
-      {/* Cinematic backdrop video. Decorative only — muted, looping, no controls. */}
-      <video
-        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-40 motion-reduce:hidden"
-        src="/hero.mp4"
-        poster="/hero-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-        tabIndex={-1}
-      />
+  // Lazy-load the background video AFTER the page is interactive.
+  // The poster image covers the section immediately (fast LCP).
+  // The video is injected only when the section enters the viewport.
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-      {/* Still frame for reduced-motion users (and while the video buffers) */}
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          // Create and append the video element dynamically
+          const video = document.createElement("video");
+          video.className =
+            "absolute inset-0 z-0 h-full w-full object-cover object-center opacity-40";
+          video.src = "/hero.mp4";
+          video.autoplay = true;
+          video.muted = true;
+          video.loop = true;
+          video.playsInline = true;
+          video.setAttribute("aria-hidden", "true");
+          video.setAttribute("tabindex", "-1");
+          // Respect reduced-motion preference
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+          }
+          section.prepend(video);
+          videoRef.current = video;
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#050505]">
+      {/*
+        LCP OPTIMISATION: The poster image loads instantly (no network wait).
+        The video is lazy-injected via useEffect above, only when the section
+        is visible and after the page is interactive, keeping LCP fast.
+      */}
       <div
-        className="absolute inset-0 z-0 hidden bg-cover bg-center opacity-40 motion-reduce:block"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-40"
         style={{ backgroundImage: "url('/hero-poster.jpg')" }}
         aria-hidden="true"
       />

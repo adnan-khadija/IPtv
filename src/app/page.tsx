@@ -45,8 +45,8 @@ const pageSchema = {
     },
     {
       "@type": "ItemList",
-      name: "StreamVault IPTV-Angebote",
-      description: "Verfügbare Premium-IPTV-Abonnements",
+      name: "TV Schweiz IPTV-Angebote",
+      description: "Verfügbare Premium-IPTV-Abonnements in der Schweiz",
       itemListElement: [
         {
           "@type": "Offer",
@@ -55,7 +55,7 @@ const pageSchema = {
           price: "11.99",
           priceCurrency: "CHF",
           availability: "https://schema.org/InStock",
-          seller: { "@type": "Organization", name: "StreamVault" },
+          seller: { "@type": "Organization", name: "TV Schweiz" },
         },
         {
           "@type": "Offer",
@@ -64,7 +64,7 @@ const pageSchema = {
           price: "19.99",
           priceCurrency: "CHF",
           availability: "https://schema.org/InStock",
-          seller: { "@type": "Organization", name: "StreamVault" },
+          seller: { "@type": "Organization", name: "TV Schweiz" },
         },
         {
           "@type": "Offer",
@@ -73,7 +73,7 @@ const pageSchema = {
           price: "30.99",
           priceCurrency: "CHF",
           availability: "https://schema.org/InStock",
-          seller: { "@type": "Organization", name: "StreamVault" },
+          seller: { "@type": "Organization", name: "TV Schweiz" },
         },
         {
           "@type": "Offer",
@@ -82,7 +82,7 @@ const pageSchema = {
           price: "45.99",
           priceCurrency: "CHF",
           availability: "https://schema.org/InStock",
-          seller: { "@type": "Organization", name: "StreamVault" },
+          seller: { "@type": "Organization", name: "TV Schweiz" },
         },
       ],
     },

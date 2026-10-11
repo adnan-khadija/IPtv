@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   publisher: "TV Schweiz",
   metadataBase: new URL(BASE_URL),
   alternates: {
-    canonical: "./",
+    canonical: BASE_URL,
   },
   openGraph: {
     type: "website",
@@ -89,26 +89,31 @@ const globalSchema = {
       url: BASE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/favicon.png`,
-        width: 180,
-        height: 180,
+        url: `${BASE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
       },
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer support",
-        availableLanguage: ["German"],
+        availableLanguage: ["German", "French", "Italian"],
         contactOption: "TollFree",
+        areaServed: "CH",
       },
-      sameAs: [],
+      areaServed: "CH",
+      sameAs: [
+        "https://www.facebook.com/tvsuisse",
+        "https://www.instagram.com/tvsuisse",
+      ],
     },
     {
       "@type": "WebSite",
       "@id": `${BASE_URL}/#website`,
       url: BASE_URL,
-      name: "TV Schweiz IPTV",
-      description: "Premium IPTV Dienst mit über 30 000 Sendern und 90 000+ VOD",
+      name: "TV Schweiz — IPTV Schweiz Premium",
+      description: "Premium IPTV Dienst mit über 30 000 Sendern und 90 000+ VOD. Ab 11.99 CHF/Monat.",
       publisher: { "@id": `${BASE_URL}/#organization` },
-      inLanguage: ["de-DE", "de-CH"],
+      inLanguage: ["de-CH", "fr-CH", "it-CH"],
       potentialAction: {
         "@type": "SearchAction",
         target: { "@type": "EntryPoint", urlTemplate: `${BASE_URL}/channels?q={search_term_string}` },

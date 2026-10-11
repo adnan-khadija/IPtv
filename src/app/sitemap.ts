@@ -5,21 +5,52 @@ export const dynamic = "force-static";
 
 const BASE_URL = 'https://tvsuisse.ch';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const pages = [
-    { path: '', priority: 1.0, changeFrequency: 'daily' as const },
-    { path: '/channels', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/terms', priority: 0.5, changeFrequency: 'monthly' as const },
-    { path: '/privacy', priority: 0.5, changeFrequency: 'monthly' as const },
-    { path: '/refund', priority: 0.5, changeFrequency: 'monthly' as const },
-  ];
+// Static dates — only update these when page content actually changes.
+// Using a fixed date avoids Google re-crawling unchanged pages on every build.
+const DATES = {
+  home:     new Date('2026-10-11'),
+  channels: new Date('2026-10-11'),
+  contact:  new Date('2026-10-01'),
+  legal:    new Date('2026-09-01'),
+};
 
-  return pages.map((page) => ({
-    url: `${BASE_URL}${page.path}`,
-    lastModified: now,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
-  }));
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: `${BASE_URL}/`,
+      lastModified: DATES.home,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${BASE_URL}/channels/`,
+      lastModified: DATES.channels,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/contact/`,
+      lastModified: DATES.contact,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/terms/`,
+      lastModified: DATES.legal,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/privacy/`,
+      lastModified: DATES.legal,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/refund/`,
+      lastModified: DATES.legal,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ];
 }
