@@ -11,6 +11,12 @@ const WhatsAppIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg {...props} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+  </svg>
+);
+
 export default function ContactContent() {
   return (
     <div className="min-h-screen flex items-center justify-center pt-24 pb-20 relative overflow-hidden">
@@ -74,6 +80,33 @@ export default function ContactContent() {
           >
             <WhatsAppIcon className="w-6 h-6" />
             Uns auf WhatsApp kontaktieren
+          </a>
+        </motion.div>
+
+        {/* Instagram Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-[#141414] border border-[#E1306C]/20 rounded-2xl p-8 mb-8 shadow-[0_0_40px_rgba(225,48,108,0.08)]"
+        >
+          <div className="w-20 h-20 rounded-full bg-[#E1306C]/15 flex items-center justify-center mx-auto mb-6">
+            <InstagramIcon className="w-10 h-10 text-[#E1306C]" />
+          </div>
+
+          <p className="text-white font-bold text-xl mb-1">StreamVault Instagram</p>
+          <p className="text-gray-500 text-sm mb-6">@streamvault911</p>
+
+          <a
+            id="instagram-contact-btn"
+            href="https://www.instagram.com/streamvault911/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-xl font-bold text-lg text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(225,48,108,0.35)]"
+            style={{ background: "linear-gradient(135deg, #E1306C 0%, #833AB4 100%)" }}
+          >
+            <InstagramIcon className="w-6 h-6" />
+            Folge uns auf Instagram
           </a>
         </motion.div>
 
